@@ -4,7 +4,7 @@ export const search = async (
   query: string,
   page = 1
 ): Promise<SearchResult[] | null> => {
-  const url = `${process.env.BACKEND_URL}${query}?page=${page}`;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}${query}?page=${page}`;
 
   try {
     const fetchData = await fetch(url, {
@@ -30,7 +30,7 @@ export const advancedSearch = async (
   year?: number,
   status?: AnimeStatus
 ): Promise<SearchResult[] | null> => {
-  const url = `${process.env.BACKEND_URL}advanced-search?query=${query}&type=${type}&season=${season}&format=${format}&sort=${sort}&genres=${genres}&id=${id}&year=${year}&status=${status}&page=${page}`;
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}advanced-search?query=${query}&type=${type}&season=${season}&format=${format}&sort=${sort}&genres=${genres}&id=${id}&year=${year}&status=${status}&page=${page}`;
 
   try {
     const fetchData = await fetch(url, {

@@ -11,7 +11,7 @@ export const gogoStreamingLinks = async (
   episodeId: string,
   server = "gogocdn"
 ): Promise<GogoanimeEpisodeLink[] | null> => {
-  const url = `${process.env.GOGOANIME_URL}${episodeId}?server=${server}`;
+  const url = `${process.env.NEXT_PUBLIC_GOGOANIME_URL}${episodeId}?server=${server}`;
 
   try {
     const fetchData = await fetch(url, {
