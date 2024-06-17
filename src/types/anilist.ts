@@ -1,4 +1,4 @@
-interface SearchResult {
+export interface SearchResult {
   id: number;
   malId: number;
   title: {
@@ -24,7 +24,7 @@ interface SearchResult {
   releaseDate: number;
 }
 
-enum AnimeStatus {
+export enum AnimeStatus {
   ONGOING = "Ongoing",
   COMPLETED = "Completed",
   HIATUS = "Hiatus",
@@ -33,7 +33,7 @@ enum AnimeStatus {
   UNKNOWN = "Unknown",
 }
 
-enum AnimeGenres {
+export enum AnimeGenres {
   ACTION = "Action",
   ADVENTURE = "Adventure",
   CARS = "Cars",
@@ -54,7 +54,7 @@ enum AnimeGenres {
   THRILLER = "Thriller",
 }
 
-interface Recommendation {
+export interface Recommendation {
   id: number;
   malId: number;
   title: {
@@ -73,7 +73,7 @@ interface Recommendation {
   type: ["TV", "Movie", "Manga"];
 }
 
-interface VoiceActor {
+export interface VoiceActor {
   id: number;
   language: string;
   name: {
@@ -87,7 +87,7 @@ interface VoiceActor {
   imageHash: string;
 }
 
-interface AnimeCharacter {
+export interface AnimeCharacter {
   id: number;
   role: string;
   name: {
@@ -102,7 +102,7 @@ interface AnimeCharacter {
   voiceActors: VoiceActor[];
 }
 
-interface Relation {
+export interface Relation {
   id: number;
   relationType: string;
   malId: number;
@@ -123,20 +123,20 @@ interface Relation {
   rating: number;
 }
 
-interface Mapping {
+export interface Mapping {
   id: string;
   providerId: string;
   similarity: number;
   providerType: ["ANIME", "MANGA"];
 }
 
-interface Artwork {
+export interface Artwork {
   img: string;
   type: string;
   providerId: string;
 }
 
-interface Episode {
+export interface Episode {
   id: string;
   title: string;
   description: string | null;
@@ -146,7 +146,7 @@ interface Episode {
   airDate: string | null;
 }
 
-interface AnimeInfo {
+export interface AnimeInfo {
   synonyms: string[];
   isLicensed: boolean;
   isAdult: boolean;
@@ -179,7 +179,7 @@ interface AnimeInfo {
   episodes: Episode[];
 }
 
-interface RecentEpisodes {
+export interface RecentEpisodes {
   id: number;
   malId: number;
   title: {
@@ -196,7 +196,7 @@ interface RecentEpisodes {
   type: ["TV", "Movie", "Manga"];
 }
 
-interface TrendingAnime extends SearchResult {
+export interface TrendingAnime extends SearchResult {
   trailer: {
     id: string;
     site: string;
@@ -205,8 +205,8 @@ interface TrendingAnime extends SearchResult {
   };
 }
 
-interface PopularAnime extends TrendingAnime {}
+export interface PopularAnime extends TrendingAnime {}
 
-interface AnimeAiringSchedule extends TrendingAnime {
+export interface AnimeAiringSchedule extends TrendingAnime {
   airingAt: Date;
 }
