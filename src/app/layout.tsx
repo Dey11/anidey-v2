@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header/header";
+import { SessionProvider } from "next-auth/react";
+import { Toaster } from "@/components/ui/toaster";
+import { RecoilRoot } from "recoil";
+import RecoilContextProvider from "../lib/recoil-context-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +21,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark`}>{children}</body>
+      <SessionProvider>
+        <RecoilContextProvider>
+          <body className={`${inter.className} dark`}>
+            <div className="absolute top-0 z-50 w-full">
+              <Header />
+            </div>
+            {children}
+            <Toaster />
+          </body>
+        </RecoilContextProvider>
+      </SessionProvider>
     </html>
   );
 }

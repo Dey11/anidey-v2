@@ -147,6 +147,14 @@ export interface Episode {
 }
 
 export interface AnimeInfo {
+  id: number;
+  title: {
+    romaji: string;
+    english: string;
+    native: string;
+    userPreferred: string;
+  };
+  malId: number;
   synonyms: string[];
   isLicensed: boolean;
   isAdult: boolean;
@@ -157,6 +165,20 @@ export interface AnimeInfo {
     thumbnail: string;
     thumbnailHash: string;
   };
+  nextAiringEpisode?: {
+    airingTime: Date;
+    timeUntilAiring: Date;
+    episode: 4;
+  };
+  image: string;
+  imageHash: string;
+  popularity: number;
+  color: string;
+  cover: string;
+  coverHash: string;
+  description: string;
+  status: AnimeStatus;
+  releaseDate: string;
   startDate: {
     year: number;
     month: number;
@@ -167,8 +189,12 @@ export interface AnimeInfo {
     month: number;
     day: number;
   };
+  totalEpisodes: number;
+  currentEpisodes: number;
+  rating: number;
   duration: number;
-  //   season: string;
+  genres: AnimeGenres[];
+  season: string;
   studios: string[];
   subOrDub: ["sub", "dub"];
   recommendations: Recommendation[];
@@ -203,9 +229,18 @@ export interface TrendingAnime extends SearchResult {
     thumbnail: string;
     thumbnailHash: string;
   };
+  duration: number;
 }
 
-export interface PopularAnime extends TrendingAnime {}
+export interface PopularAnime extends SearchResult {
+  trailer: {
+    id: string;
+    site: string;
+    thumbnail: string;
+    thumbnailHash: string;
+  };
+  duration: number;
+}
 
 export interface AnimeAiringSchedule extends TrendingAnime {
   airingAt: Date;
