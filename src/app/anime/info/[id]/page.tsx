@@ -1,29 +1,28 @@
-import { getAnimeInfo } from "@/lib/anilistApi/getAnimeInfo";
+// @ts-nocheck
+
 import { UpperSection } from "./upper-section";
 import { CharSection } from "./characters-section";
 import { RelatedToAnime } from "./related-section";
 import { Recommendations } from "./recommendations";
-import WideGenreCardSection from "./wide-genre-cards";
-import { AnimeGenres } from "@/types/anilist";
+import WideGenreCardSection, { WideCard } from "./wide-genre-cards";
+import { getAnimeAboutInfo } from "aniwatch";
 
 const page = async ({ params }: { params: { id: string } }) => {
-  const info = await getAnimeInfo(params.id);
-  // @ts-ignore
-  if (info.message) return <div>Not Found</div>;
-  const jpTitle = info?.title.native;
-  const genre = info?.genres[0];
+  const animeInfo = await getAnimeAboutInfo(params.id);
+  console.log(animeInfo.seasons);
+  if (animeInfo == null) return <div>Not Found</div>;
 
   return (
     <div className="mx-auto max-w-[1440px] px-2 pt-20">
-      <UpperSection info={info} />
-      <CharSection info={info} />
-      <RelatedToAnime info={info} />
+      <UpperSection animeInfo={animeInfo.anime} />
+      {/* <CharSection charInfo={animeInfo.anime.info.charactersVoiceActors} /> */}
+      <RelatedToAnime relatedAnimeInfo={animeInfo.relatedAnimes} />
       <div className="xl:grid xl:grid-cols-6">
         <div className="col-span-4">
           <Recommendations info={info} />
         </div>
         <div className="col-span-2 pt-3">
-          <WideGenreCardSection genre={genre as AnimeGenres} />
+          {/* <WideGenreCardSection genre={genre as AnimeGenres} /> */}
         </div>
       </div>
     </div>

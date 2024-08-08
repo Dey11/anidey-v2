@@ -1,22 +1,30 @@
-import { fetchTrendingAnime } from "@/lib/anilistApi/getLists";
 import SingleCarouselRow from "@/components/carousel-row";
+import { Top10AnimeAniwatchItem } from "@/lib/aniwatch";
 import { getHomePage } from "aniwatch";
 
-const TopPicks = async () => {
-  const test = await getHomePage();
-  console.log(test.spotlightAnimes);
+const TopPicks = async ({
+  top10Animes,
+}: {
+  top10Animes: {
+    week: Top10AnimeAniwatchItem[];
+    month: Top10AnimeAniwatchItem[];
+  };
+}) => {
+  const animeList = await getHomePage();
 
-  const trendingList = await fetchTrendingAnime(1, 12);
-  if (trendingList == null) return <div></div>;
+  if (animeList == null) return <div></div>;
 
   return (
     <div className="mx-2 overflow-x-hidden">
-      <h1 className="pb-5 text-2xl font-bold text-rose-500">
+      <h1 className="pb-3 text-2xl font-bold text-rose-500">
+        Top Picks This Week
+      </h1>
+      <SingleCarouselRow list={top10Animes.week.slice(0, 6)} />
+
+      <h1 className="pb-3 text-2xl font-bold text-rose-500">
         Top Picks This Month
       </h1>
-
-      <SingleCarouselRow list={trendingList.slice(0, 6)} />
-      <SingleCarouselRow list={trendingList.slice(6, 12)} />
+      <SingleCarouselRow list={top10Animes.month.slice(0, 6)} />
     </div>
   );
 };
