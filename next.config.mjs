@@ -14,15 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "media.kitsu.io",
       },
-      {
-        protocol: "https",
-        hostname: "cdn.noitatnemucod.net",
-      },
     ],
   },
 };
 
 // https://s4.anilist.co/file/anilistcdn/media
 // https://artworks.thetvdb.com/banners/v4/series/429536/posters/63bee72be1ba9.jpg
-// cdn.noitatnemucod.net;
 export default nextConfig;

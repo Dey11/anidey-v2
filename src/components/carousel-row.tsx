@@ -8,15 +8,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { RecentEpisodes, Relation, TrendingAnime } from "@/types/anilist";
 import Link from "next/link";
 import { CalendarRange, Clock, Library, Star } from "lucide-react";
 import clsx from "clsx";
-import { SpotlightAnimeAniwatch, Top10AnimeAniwatchItem } from "@/lib/aniwatch";
 
 const SingleCarouselRow = ({
   list,
 }: {
-  list: SpotlightAnimeAniwatch[] | Top10AnimeAniwatchItem[];
+  list: TrendingAnime[] | RecentEpisodes[] | Relation[];
 }) => {
   if (!list)
     return <div className="pt-5 text-2xl text-rose-500">No anime found...</div>;
@@ -35,31 +35,58 @@ const SingleCarouselRow = ({
             key={anime.id}
           >
             <Link href={`/anime/info/${anime.id}`}>
-              <div className="max-h-fit max-w-fit pt-2" key={anime.id}>
+              <div className="max-h-fit max-w-fit" key={anime.id}>
                 <AnimeCard anime={anime} />
                 <div className="">
                   <h1 className="max-w-28 truncate pt-2 text-xs hover:text-rose-500 sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
-                    {anime.name}
+                    {anime.title.english
+                      ? anime.title.english
+                      : anime.title.romaji}
                   </h1>
-                  <div className="flex items-center gap-x-1 pt-1 sm:gap-x-2">
-                    {anime.episodes && (
-                      <div className="flex items-center sm:gap-x-1">
-                        <Library size={16} />
-                        <p className="text-[9px] sm:text-xs">
-                          {anime.episodes.sub}
-                        </p>
-                      </div>
-                    )}
+                  {anime.rating ? (
+                    <div className="flex items-center gap-x-1 pt-1 sm:gap-x-2">
+                      {anime.totalEpisodes && (
+                        <div className="flex items-center sm:gap-x-1">
+                          <Library size={16} />
+                          <p className="text-[9px] sm:text-xs">
+                            {anime.totalEpisodes}
+                          </p>
+                        </div>
+                      )}
 
-                    {anime.otherInfo && (
-                      <div className="flex items-center sm:gap-x-1">
-                        <CalendarRange size={16} />
-                        <p className="text-[9px] sm:text-xs">
-                          {anime.otherInfo[2]}
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                      {anime.rating && (
+                        <div className="flex items-center sm:gap-x-1">
+                          <Star size={16} />
+                          <p
+                            className={clsx(
+                              "text-[9px] sm:text-xs",
+                              anime.rating >= 80 && "text-green-500",
+                              anime.rating >= 40 &&
+                                anime.rating < 80 &&
+                                "text-yellow-500",
+                              anime.rating <= 40 && "text-red-500",
+                            )}
+                          >
+                            {anime.rating}
+                          </p>
+                        </div>
+                      )}
+
+                      {anime.releaseDate && (
+                        <div className="flex items-center sm:gap-x-1">
+                          <CalendarRange size={16} />
+                          <p className="text-[9px] sm:text-xs">
+                            {anime.releaseDate}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex items-center pt-1">
+                      <Library size={16} />
+                      <p className="pl-1 pt-1 text-xs">{anime.episodeNumber}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </Link>
