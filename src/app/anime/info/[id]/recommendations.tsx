@@ -13,7 +13,9 @@ import Link from "next/link";
 
 export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
   const color = "text-[" + info?.color + "]";
-  // console.log(color);
+
+  if (!info?.recommendations.length) return <div></div>;
+  const secondCarousel = Math.min(9, info?.recommendations.length);
 
   return (
     <div className="pt-2">
@@ -25,9 +27,11 @@ export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
           </span>
         </h1>
       )}
-      <div className="overflow-x-hidden pt-6">
+      <div className="overflow-x-hidden overflow-y-hidden pt-6">
         <RecommendationsCarouselRow list={info?.recommendations.slice(0, 4)!} />
-        <RecommendationsCarouselRow list={info?.recommendations.slice(5, 9)!} />
+        <RecommendationsCarouselRow
+          list={info?.recommendations.slice(5, secondCarousel + 1)!}
+        />
       </div>
     </div>
   );
