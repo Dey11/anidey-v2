@@ -15,9 +15,13 @@ export const UpperSection = async ({
   anilistId: string;
   info: AnimeInfo | null;
 }) => {
-  let animeId = info?.episodes[0].id.split("$")[0];
-  let episodeId = await getEpisodeList(animeId!);
-
+  let animeId = info?.episodes[0]?.id.split("$")[0];
+  let episodeId;
+  if (!animeId) {
+    episodeId = null;
+  } else {
+    episodeId = await getEpisodeList(animeId!);
+  }
   return (
     <div className="gap-x-5 sm:flex">
       <div className="relative mx-auto h-96 w-72 bg-slate-400">
@@ -82,7 +86,7 @@ export const UpperSection = async ({
         </div>
 
         <div className="">
-          {episodeId && (
+          {episodeId ? (
             <Button
               className="mx-auto mt-3 flex gap-1 font-bold text-rose-500 sm:mx-0 sm:w-20"
               variant={"secondary"}
@@ -95,6 +99,10 @@ export const UpperSection = async ({
                 Play
               </Link>
             </Button>
+          ) : (
+            <div className="font-semibold text-red-500">
+              Sorry, no episodes available for this anime
+            </div>
           )}
         </div>
       </div>
