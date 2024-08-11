@@ -19,6 +19,7 @@ const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
         `${episodeId}?ep=${searchParams.get("ep")}`,
       );
       setStreamingLinks(links);
+      // console.log(links, "here");
     } catch (err) {
       console.log(err);
     }
@@ -31,7 +32,7 @@ const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
   return (
     <div className="flex w-full max-w-[1100px] flex-col">
       <div className="">
-        <VidstackPlayer video={streamingLinks} />
+        {streamingLinks && <VidstackPlayer video={streamingLinks} />}
       </div>
       <div className="w-full rounded-b-lg bg-gradient-to-r from-[#E11D48] to-[#9916FF] p-2">
         <p className="text-sm">

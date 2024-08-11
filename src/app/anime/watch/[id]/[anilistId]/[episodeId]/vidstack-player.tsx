@@ -28,6 +28,8 @@ export const VidstackPlayer = ({
     return track.kind === "captions";
   });
 
+  // console.log(captions);
+
   return (
     <div className="">
       <div className="w-full">
