@@ -47,7 +47,7 @@ export const advancedSearchWithFilters = async (
     url += `&format=${filters.format}`;
   }
   if (filters.genre.length) {
-    console.log(filters.genre);
+    // console.log(filters.genre);
     url += `&genres=${filters.genre}`;
   }
   if (filters.year != "" && filters.year != "None") {

@@ -143,7 +143,7 @@ const YearFilter = () => {
                     },
                   });
 
-                  console.log(searchData.filters);
+                  // console.log(searchData.filters);
                 }}
               >
                 {value}
