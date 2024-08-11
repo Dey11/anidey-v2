@@ -16,6 +16,7 @@ const nextConfig = {
       },
     ],
   },
+  crossOrigin: "anonymous",
 };
 
 // https://s4.anilist.co/file/anilistcdn/media
