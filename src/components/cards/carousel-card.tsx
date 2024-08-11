@@ -17,9 +17,7 @@ import { descriptionFormatter } from "@/lib/utils";
 
 const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
   let animeId;
-  // if (info?.episodes[0]?.id) {
-  //   animeId = info?.episodes[0].id;
-  // } else
+
   if (anime?.title?.romaji) {
     animeId = anime?.title.romaji
       .split(" ")
@@ -110,7 +108,7 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
         </p>
 
         <div className="flex gap-x-4 pt-5">
-          <Link href={`/anime/watch/${animeId}/${animeId}-episode-1`}>
+          {/* <Link href={`/anime/watch/${animeId}/${anime.id}}`}>
             <Button
               size={"lg"}
               variant={"outline"}
@@ -119,7 +117,7 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
               <Play size={20} className="pr-1" />
               Play
             </Button>
-          </Link>
+          </Link> */}
           <Button
             asChild
             size={"lg"}

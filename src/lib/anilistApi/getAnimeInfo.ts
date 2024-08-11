@@ -2,7 +2,7 @@ import { AnimeInfo } from "@/types/anilist";
 
 export const getAnimeInfo = async (
   id: string,
-  provider = "gogoanime",
+  provider = "zoro",
 ): Promise<AnimeInfo | null> => {
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}info/${id}?provider=${provider}`;
 

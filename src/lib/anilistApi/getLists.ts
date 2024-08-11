@@ -1,5 +1,4 @@
 import { PopularAnime, RecentEpisodes, TrendingAnime } from "@/types/anilist";
-// todo: use classes
 
 export const fetchTrendingAnime = async (
   page = 1,
@@ -40,7 +39,7 @@ export const fetchRecentlyAiredEpisodes = async (
   page = 1,
   perPage = 10,
 ): Promise<RecentEpisodes[] | null> => {
-  const provider = "gogoanime";
+  const provider = "zoro";
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`;
 
   try {

@@ -1,55 +1,64 @@
-interface GogoanimeEpisodeLink {
+export const getStreamingLinks = async (
+  zoroEpisodeId: string,
+): Promise<AniwatchEpisodeLink | null> => {
+  const url = `${process.env.NEXT_PUBLIC_ANIWATCH_URL}/episode-srcs?id=${zoroEpisodeId}`;
+  try {
+    const fetchData = await fetch(url, {
+      cache: "force-cache",
+    });
+    const response = await fetchData.json();
+    return response;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
+
+export const getEpisodeList = async (
+  zoroId: string,
+): Promise<AniwatchEpisodeList | null> => {
+  const url = `${process.env.NEXT_PUBLIC_ANIWATCH_URL}/episodes/${zoroId}`;
+  try {
+    const fetchData = await fetch(url, {
+      next: { revalidate: 3600 },
+    });
+    const response = await fetchData.json();
+    return response;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
+
+export interface AniwatchEpisodeLink {
+  tracks: {
+    file: string;
+    label: string;
+    kind: string;
+    default?: boolean;
+  }[];
+  intro: {
+    start: number;
+    end: number;
+  };
+  outro: {
+    start: number;
+    end: number;
+  };
   sources: {
     url: string;
-    isM3U8: boolean;
-    quality: string;
+    type: string;
   }[];
-  download: string;
+  anilistId: string;
+  malId: string;
 }
 
-export const gogoStreamingLinks = async (
-  episodeId: string,
-  server = "gogocdn",
-): Promise<GogoanimeEpisodeLink[] | null> => {
-  const url = `${process.env.NEXT_PUBLIC_GOGOANIME_URL}${episodeId}?server=${server}`;
-
-  try {
-    const fetchData = await fetch(url, {
-      cache: "force-cache",
-    });
-    const response = await fetchData.json();
-    return response;
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-};
-
-// http://0.0.0.0:5000/meta/anilist/episodes/152681
-
-export const getStreamingLinks = async (
-  anilistId: string,
-): Promise<AnilistEpisodeLink[] | null> => {
-  const url = `http://0.0.0.0:5000/meta/anilist/episodes/${anilistId}`;
-  try {
-    const fetchData = await fetch(url, {
-      cache: "force-cache",
-    });
-    const response = await fetchData.json();
-    return response;
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-};
-
-export interface AnilistEpisodeLink {
-  id: string;
-  title: string;
-  image: string;
-  imageHash: string;
-  number: number;
-  createdAt: string;
-  description: string;
-  url: string;
+export interface AniwatchEpisodeList {
+  totalEpisodes: number;
+  episodes: {
+    title: string;
+    episodeId: string;
+    number: number;
+    isFiller: boolean;
+  }[];
 }

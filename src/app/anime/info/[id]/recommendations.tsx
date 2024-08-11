@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
   const color = "text-[" + info?.color + "]";
-  console.log(color);
+  // console.log(color);
 
   return (
     <div className="pt-2">

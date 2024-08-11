@@ -1,28 +1,22 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { getEpisodeList } from "@/lib/anilistApi/getStreamingLink";
 import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
 import { Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const UpperSection = async ({ info }: { info: AnimeInfo | null }) => {
-  let animeId;
-
-  if (info?.title?.romaji) {
-    animeId = info?.title.romaji
-      .split(" ")
-      .join("-")
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9-]/g, "");
-  } else {
-    animeId = info?.title.english
-      .split(" ")
-      .join("-")
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9-]/g, "");
-  }
+export const UpperSection = async ({
+  info,
+  anilistId,
+}: {
+  anilistId: string;
+  info: AnimeInfo | null;
+}) => {
+  let animeId = info?.episodes[0].id.split("$")[0];
+  let episodeId = await getEpisodeList(animeId!);
 
   return (
     <div className="gap-x-5 sm:flex">
@@ -88,18 +82,20 @@ export const UpperSection = async ({ info }: { info: AnimeInfo | null }) => {
         </div>
 
         <div className="">
-          <Button
-            className="mx-auto mt-3 flex gap-1 font-bold text-rose-500 sm:mx-0 sm:w-20"
-            variant={"secondary"}
-            asChild
-          >
-            <Link
-              href={`/anime/watch/${animeId}/${animeId}-episode-1/${info?.id}`}
+          {episodeId && (
+            <Button
+              className="mx-auto mt-3 flex gap-1 font-bold text-rose-500 sm:mx-0 sm:w-20"
+              variant={"secondary"}
+              asChild
             >
-              <Play size={15} />
-              Play
-            </Link>
-          </Button>
+              <Link
+                href={`/anime/watch/${animeId}/${anilistId}/${episodeId.episodes[0].episodeId}`}
+              >
+                <Play size={15} />
+                Play
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>

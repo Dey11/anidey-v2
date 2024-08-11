@@ -28,14 +28,17 @@ const SingleCarouselRow = ({
         loop: true,
       }}
     >
-      <CarouselContent className="mb-10">
+      <CarouselContent className="mb-8">
         {list.map((anime) => (
           <CarouselItem
             className="basis-1/3 sm:basis-1/4 xl:basis-1/6"
             key={anime.id}
           >
             <Link href={`/anime/info/${anime.id}`}>
-              <div className="max-h-fit max-w-fit" key={anime.id}>
+              <div
+                className="max-h-fit max-w-fit rounded-md pt-2"
+                key={anime.id}
+              >
                 <AnimeCard anime={anime} />
                 <div className="">
                   <h1 className="max-w-28 truncate pt-2 text-xs hover:text-rose-500 sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">

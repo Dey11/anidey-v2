@@ -14,7 +14,7 @@ const AnimeCard = ({
   anime: TrendingAnime | RecentEpisodes | Relation | Recommendation;
 }) => {
   return (
-    <div className="relative h-44 w-28 transform-gpu overflow-hidden transition-transform hover:scale-105 sm:h-56 sm:w-36 md:h-72 md:w-48 lg:h-72 lg:w-52">
+    <div className="relative h-44 w-28 transform-gpu overflow-hidden rounded-md transition-transform hover:scale-105 sm:h-56 sm:w-36 md:h-72 md:w-48 lg:h-72 lg:w-52">
       <Image
         className="h-auto w-auto object-cover"
         fill

@@ -1,11 +1,7 @@
 import { fetchTrendingAnime } from "@/lib/anilistApi/getLists";
 import SingleCarouselRow from "@/components/carousel-row";
-import { getHomePage } from "aniwatch";
 
 const TopPicks = async () => {
-  const test = await getHomePage();
-  console.log(test.spotlightAnimes);
-
   const trendingList = await fetchTrendingAnime(1, 12);
   if (trendingList == null) return <div></div>;
 

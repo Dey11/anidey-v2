@@ -5,17 +5,35 @@ import { RelatedToAnime } from "./related-section";
 import { Recommendations } from "./recommendations";
 import WideGenreCardSection from "./wide-genre-cards";
 import { AnimeGenres } from "@/types/anilist";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const response = await getAnimeInfo(params.id);
+  const description = response?.description;
+  const title = response?.title.english || response?.title.romaji;
+  const img = response?.cover;
+  return {
+    title,
+    description,
+    openGraph: {
+      images: [img!],
+    },
+  };
+}
 
 const page = async ({ params }: { params: { id: string } }) => {
   const info = await getAnimeInfo(params.id);
   // @ts-ignore
   if (info.message) return <div>Not Found</div>;
-  const jpTitle = info?.title.native;
   const genre = info?.genres[0];
 
   return (
     <div className="mx-auto max-w-[1440px] px-2 pt-20">
-      <UpperSection info={info} />
+      <UpperSection anilistId={params.id} info={info} />
       <CharSection info={info} />
       <RelatedToAnime info={info} />
       <div className="xl:grid xl:grid-cols-6">
@@ -31,9 +49,3 @@ const page = async ({ params }: { params: { id: string } }) => {
 };
 
 export default page;
-
-{
-  /* <div className="fixed left-0 bg-slate-400 text-[50px] tracking-[46px] [writing-mode:vertical-lr]">
-        {jpTitle}
-      </div> */
-}

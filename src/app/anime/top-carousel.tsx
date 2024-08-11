@@ -15,7 +15,7 @@ import { TrendingAnime } from "@/types/anilist";
 import { useEffect, useRef, useState } from "react";
 
 const TopCarousel = () => {
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
   const [data, setData] = useState<TrendingAnime[]>([]);
 
@@ -37,7 +37,7 @@ const TopCarousel = () => {
   return (
     <div className="h-[560px] overflow-hidden">
       <Carousel
-        // plugins={[plugin.current]}
+        plugins={[plugin.current]}
         opts={{
           // align: "center",
           slidesToScroll: 1,

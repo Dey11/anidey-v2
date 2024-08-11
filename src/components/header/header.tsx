@@ -11,7 +11,7 @@ const Header = () => {
         <ul className="flex items-center justify-between">
           <li>
             <Link href={"/anime"}>
-              <p className="text-lg font-bold text-rose-500 lg:text-2xl">
+              <p className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text text-lg font-bold text-transparent lg:text-2xl">
                 Anidey
               </p>
             </Link>
