@@ -38,9 +38,11 @@ export const Footer = () => {
         <div className="flex gap-x-2">
           <p>Privacy Policy</p>
           <p>Terms of Service</p>
-          <p className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-semibold text-transparent">
-            Donate :3
-          </p>
+          <a href="https://ko-fi.com/dey11">
+            <p className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-semibold text-transparent">
+              Donate :3
+            </p>
+          </a>
         </div>
         <h3>
           Anidey does not store any files on our server, we only provide links

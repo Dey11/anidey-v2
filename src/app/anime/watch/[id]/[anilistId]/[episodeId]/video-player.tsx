@@ -37,7 +37,11 @@ const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
       <div className="w-full rounded-b-lg bg-gradient-to-r from-[#E11D48] to-[#9916FF] p-2">
         <p className="text-sm">
           Anidey provides an ad-free experience. You can help us manage our
-          costs by donating here or by simply sharing the website. Thanks :3
+          costs by donating{" "}
+          <a href="https://ko-fi.com/dey11" className="underline">
+            here
+          </a>{" "}
+          or by simply sharing the website. Thanks :3
         </p>
       </div>
     </div>
