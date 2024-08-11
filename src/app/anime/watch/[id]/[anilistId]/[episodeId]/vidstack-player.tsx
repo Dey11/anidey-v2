@@ -14,7 +14,7 @@ export const VidstackPlayer = ({
 }: {
   video: AniwatchEpisodeLink | null;
 }) => {
-  console.log(video);
+  // console.log(video);
 
   const thumbnail = video?.tracks.filter((track) => {
     return track.kind === "thumbnail";
