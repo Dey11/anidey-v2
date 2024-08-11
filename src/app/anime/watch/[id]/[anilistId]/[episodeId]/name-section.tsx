@@ -4,12 +4,16 @@ import { Bell, Flag, Info } from "lucide-react";
 const NameSection = ({ animeInfo }: { animeInfo: AnimeInfo }) => {
   let nextEpisode;
   if (animeInfo.status == "Ongoing") {
-    var timestamp = animeInfo.nextAiringEpisode!.airingTime!.valueOf() * 1000;
-    var todate = new Date(timestamp).getDate();
-    var tomonth = new Date(timestamp).getMonth() + 1;
-    var toyear = new Date(timestamp).getFullYear();
-    var original_date = todate + "/" + tomonth + "/" + toyear;
-    nextEpisode = original_date;
+    if (animeInfo.nextAiringEpisode?.airingTime) {
+      var timestamp = animeInfo.nextAiringEpisode!.airingTime!.valueOf() * 1000;
+      var todate = new Date(timestamp).getDate();
+      var tomonth = new Date(timestamp).getMonth() + 1;
+      var toyear = new Date(timestamp).getFullYear();
+      var original_date = todate + "/" + tomonth + "/" + toyear;
+      nextEpisode = original_date;
+    } else {
+      nextEpisode = "N/A";
+    }
   } else {
     nextEpisode = "N/A";
   }
