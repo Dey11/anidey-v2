@@ -4,18 +4,15 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { getEpisodeList } from "@/lib/anilistApi/getStreamingLink";
 import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
+import clsx from "clsx";
 import { Play } from "lucide-react";
-import {
-  DotGothic16,
-  Montserrat_Alternates,
-  Press_Start_2P,
-} from "next/font/google";
+import { DotGothic16, Montserrat, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
 const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
-const mont = Montserrat_Alternates({ weight: "400", subsets: ["latin"] });
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
 
 export const UpperSection = async ({
   info,
@@ -48,9 +45,9 @@ export const UpperSection = async ({
 
       <div className="w-full">
         <h1
-          className={`pt-5 text-center text-2xl sm:pt-0 sm:text-left ${mont.className}`}
+          className={`pt-5 text-center text-2xl font-extrabold sm:pt-0 sm:text-left ${montserrat.className}`}
         >
-          {info?.title.english ? info?.title.english : info?.title.romaji}
+          {info?.title?.english ? info?.title?.english : info?.title?.romaji}
         </h1>
 
         <div className="pt-6">
@@ -69,7 +66,17 @@ export const UpperSection = async ({
         >
           <div className="flex flex-col gap-y-3">
             <p>
-              Rating: <span className="text-[#2AF332]">{info?.rating}</span>
+              Rating:{" "}
+              <span
+                className={clsx(
+                  "text-[9px] sm:text-xs",
+                  info!.rating >= 80 && "text-[#2AF332]",
+                  info!.rating >= 40 && info!.rating < 80 && "text-yellow-500",
+                  info!.rating <= 40 && "text-red-500",
+                )}
+              >
+                {info?.rating}
+              </span>
             </p>
 
             <p>Status: {info?.status}</p>

@@ -14,7 +14,8 @@ import { CalendarRange, Clock, Library, Star } from "lucide-react";
 import clsx from "clsx";
 import { Poppins } from "next/font/google";
 
-const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+const poppinsSmall = Poppins({ weight: "400", subsets: ["latin"] });
+const poppinsBig = Poppins({ weight: "600", subsets: ["latin"] });
 
 const SingleCarouselRow = ({
   list,
@@ -45,8 +46,10 @@ const SingleCarouselRow = ({
                 key={anime.id}
               >
                 <AnimeCard anime={anime} />
-                <div className={`${poppins.className}`}>
-                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
+                <div className={`${poppinsSmall.className}`}>
+                  <h1
+                    className={`max-w-28 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52 ${poppinsBig.className}`}
+                  >
                     {anime.title.english
                       ? anime.title.english
                       : anime.title.romaji}
