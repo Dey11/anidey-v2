@@ -15,12 +15,8 @@ const nextConfig = {
         hostname: "media.kitsu.io",
       },
     ],
-    loader: "custom",
-    loaderFile: "./loader.tsx",
   },
   crossOrigin: "anonymous",
 };
 
-// https://s4.anilist.co/file/anilistcdn/media
-// https://artworks.thetvdb.com/banners/v4/series/429536/posters/63bee72be1ba9.jpg
 export default nextConfig;
