@@ -60,7 +60,7 @@ const WideCard = ({ anime }: { anime: PopularAnime }) => {
 
             <div className="flex gap-1">
               {anime.genres.slice(0, 2).map((genre) => (
-                <Badge className="bg-violet-500 text-[10px]" key={genre}>
+                <Badge className="bg-[#8F00FF] text-[10px]" key={genre}>
                   {genre}
                 </Badge>
               ))}

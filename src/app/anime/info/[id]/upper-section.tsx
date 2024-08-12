@@ -5,11 +5,17 @@ import { getEpisodeList } from "@/lib/anilistApi/getStreamingLink";
 import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
 import { Play } from "lucide-react";
-import { DotGothic16 } from "next/font/google";
+import {
+  DotGothic16,
+  Montserrat_Alternates,
+  Press_Start_2P,
+} from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
 const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
+const mont = Montserrat_Alternates({ weight: "400", subsets: ["latin"] });
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 export const UpperSection = async ({
   info,
@@ -42,7 +48,7 @@ export const UpperSection = async ({
 
       <div className="w-full">
         <h1
-          className={`pt-5 text-center text-2xl sm:pt-0 sm:text-left ${dotgotchic16.className}`}
+          className={`pt-5 text-center text-2xl sm:pt-0 sm:text-left ${mont.className}`}
         >
           {info?.title.english ? info?.title.english : info?.title.romaji}
         </h1>
@@ -51,14 +57,16 @@ export const UpperSection = async ({
           {info?.genres.slice(0, 4).map((genre) => (
             <Badge
               key={genre}
-              className="mr-2 bg-violet-500 text-[10px] font-bold"
+              className="mr-2 bg-[#8F00FF] text-[10px] font-bold"
             >
               {genre}
             </Badge>
           ))}
         </div>
 
-        <div className="flex w-full flex-row justify-between pt-5 text-sm font-light uppercase sm:justify-normal sm:gap-x-40">
+        <div
+          className={`flex w-full flex-row justify-between pt-5 text-sm font-light uppercase sm:justify-normal sm:gap-x-40 ${dotgotchic16.className}`}
+        >
           <div className="flex flex-col gap-y-3">
             <p>
               Rating: <span className="text-[#2AF332]">{info?.rating}</span>
@@ -82,7 +90,7 @@ export const UpperSection = async ({
         </div>
 
         <div className="pt-5 text-sm font-light">
-          <ScrollArea className="sm:h-20 md:h-24">
+          <ScrollArea className={`sm:h-20 md:h-24 ${dotgotchic16.className}`}>
             <p className="leading-6 tracking-wider">
               <span className="uppercase">Description:</span>{" "}
               <span>{descriptionFormatter(info?.description as string)}</span>
@@ -93,7 +101,7 @@ export const UpperSection = async ({
         <div className="">
           {episodeId ? (
             <Button
-              className="mx-auto mt-3 flex gap-1 font-bold text-[#E11D48] sm:mx-0 sm:w-20"
+              className={`mx-auto mt-3 flex gap-1 font-bold text-[#E11D48] sm:mx-0 sm:w-20 ${pressStart2P.className}`}
               variant={"secondary"}
               asChild
             >
@@ -105,7 +113,7 @@ export const UpperSection = async ({
               </Link>
             </Button>
           ) : (
-            <div className="font-semibold text-red-500">
+            <div className="font-semibold text-[#E11D48]">
               Sorry, no episodes available for this anime
             </div>
           )}

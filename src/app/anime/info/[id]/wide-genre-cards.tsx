@@ -31,7 +31,7 @@ export default WideGenreCardSection;
 export const WideCard = ({ anime }: { anime: SearchResult }) => {
   return (
     <Link href={`/anime/info/${anime.id}`}>
-      <div className="relative mb-2 h-[136px] overflow-hidden rounded-sm">
+      <div className="relative mb-2 h-[136px] overflow-hidden rounded-md">
         <Image
           src={anime.cover}
           fill
@@ -57,7 +57,7 @@ export const WideCard = ({ anime }: { anime: SearchResult }) => {
 
             <div className="flex gap-1">
               {anime.genres.slice(0, 2).map((genre) => (
-                <Badge className="bg-violet-500 text-[10px]" key={genre}>
+                <Badge className="bg-[#8F00FF] text-[10px]" key={genre}>
                   {genre}
                 </Badge>
               ))}

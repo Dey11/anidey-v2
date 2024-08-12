@@ -7,6 +7,7 @@ import {
   Clock,
   History,
   Library,
+  Play,
   Star,
 } from "lucide-react";
 import clsx from "clsx";
@@ -59,10 +60,10 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
         <div className="gap-x-4 pt-2 sm:flex">
           <div className="flex gap-x-2">
             <div>
-              <Badge className="bg-violet-500">{anime.genres[0]}</Badge>
+              <Badge className="bg-[#8F00FF]">{anime.genres[0]}</Badge>
             </div>
             <div>
-              <Badge className="bg-violet-500">{anime.genres[1]}</Badge>
+              <Badge className="bg-[#8F00FF]">{anime.genres[1]}</Badge>
             </div>
           </div>
 
@@ -124,14 +125,14 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
             asChild
             size={"lg"}
             variant={"outline"}
-            className="border-slate-700 font-bold text-red-500"
+            className="border-slate-700 font-bold text-[#E11D48]"
           >
             <Link
               href={`/anime/info/${anime.id}`}
               className={`${pressStart2P.className} text-sm`}
             >
-              <BadgeInfo size={24} className="pr-1" />
-              Info
+              <Play size={24} className="pr-1" />
+              Play
             </Link>
           </Button>
         </div>

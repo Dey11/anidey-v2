@@ -6,9 +6,10 @@ import { Recommendations } from "./recommendations";
 import WideGenreCardSection from "./wide-genre-cards";
 import { AnimeGenres } from "@/types/anilist";
 import { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { DotGothic16, Poppins } from "next/font/google";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+// const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
 
 export async function generateMetadata({
   params,
