@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
+import { DotGothic16, Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
+const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+
 export default function Home() {
   return (
-    <main className="px-2">
+    <main className={`px-2 ${poppins.className}`}>
       <div className="mx-auto max-w-[1440px]">
         <div className="relative mx-auto pt-20">
           <Image
@@ -15,15 +19,18 @@ export default function Home() {
             alt="Hero"
           />
           <div className="absolute bottom-[50px] left-[325px] hidden text-center text-2xl text-slate-200 lg:block">
-            <p className="backdrop-blur-[3px]">
+            <p className={`backdrop-blur-[3px] ${dotgotchic16.className}`}>
               Welcome to{" "}
-              <span className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-bold text-transparent">
+              <span className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-extrabold text-transparent">
                 Anidey
               </span>
               : Your Top Destination for Ad-Free Anime Streaming
             </p>
             <Link href="/anime">
-              <Button variant={"secondary"} className="mt-5">
+              <Button
+                variant={"secondary"}
+                className={`mt-5 ${dotgotchic16.className}`}
+              >
                 Dive Right In!
               </Button>
             </Link>
@@ -32,7 +39,7 @@ export default function Home() {
         <div className="block pt-5 text-center text-xl text-yellow-200 lg:hidden">
           <p className="backdrop-blur-[1px]">
             Welcome to{" "}
-            <span className="font-semibold text-rose-500">Anidey</span>: Your
+            <span className="font-semibold text-[#E11D48]">Anidey</span>: Your
             Top Destination for Ad-Free Anime Streaming
           </p>
           <Link href="/anime">
@@ -43,10 +50,12 @@ export default function Home() {
         </div>
       </div>
       <div className="mx-auto max-w-[1000px] py-5 pb-10 text-center lg:text-left">
-        <h1 className="hidden text-xl lg:block">Explore, Play and Connect</h1>
+        <h1 className={`hidden text-xl lg:block ${dotgotchic16.className}`}>
+          Explore, Play and Connect
+        </h1>
 
         <div className="pt-5 lg:pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
             Start Your Anime Adventure Today
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -58,7 +67,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
             Discover Our Extensive Anime Collection
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -69,7 +78,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
             Engage with Games and Activities
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -85,7 +94,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
             Coming Soon: Social Media Integration
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -98,7 +107,9 @@ export default function Home() {
         </div>
 
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">Join the Anidey Community</h2>
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+            Join the Anidey Community
+          </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
             <li>
               Free Sign-Up: Join Anidey for free and start streaming instantly.
@@ -113,7 +124,9 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">Follow Us for Updates</h2>
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+            Follow Us for Updates
+          </h2>
           <p>Stay updated with the latest news and announcements:</p>
           <ul className="list-inside list-disc pt-4 text-lg">
             <li>Twitter</li>
@@ -121,7 +134,9 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">Contact Us</h2>
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+            Contact Us
+          </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
             <li>
               24/7 Support: Need assistance? Our support team is available
@@ -130,7 +145,9 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className="text-2xl text-[#8F00FF]">Disclaimer</h2>
+          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+            Disclaimer
+          </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
             <li>
               Anidey does not own the content displayed on this website. All

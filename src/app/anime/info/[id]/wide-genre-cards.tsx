@@ -1,10 +1,12 @@
-import { fetchPopularAnime } from "@/lib/anilistApi/getLists";
-import { AnimeGenres, PopularAnime, SearchResult } from "@/types/anilist";
+import { AnimeGenres, SearchResult } from "@/types/anilist";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { CalendarRange, Clock, Star } from "lucide-react";
+import { CalendarRange, Star } from "lucide-react";
 import Link from "next/link";
 import { genreSearch } from "@/lib/anilistApi/search";
+import { Press_Start_2P } from "next/font/google";
+
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const WideGenreCardSection = async ({ genre }: { genre: AnimeGenres }) => {
   const searchedResults = await genreSearch(genre);
@@ -12,7 +14,9 @@ const WideGenreCardSection = async ({ genre }: { genre: AnimeGenres }) => {
 
   return (
     <div className="mx-2 overflow-x-hidden">
-      <h1 className="pb-5 text-center text-2xl font-bold text-rose-500 sm:text-left">
+      <h1
+        className={`pb-5 text-center text-xl font-bold text-[#E11D48] sm:text-left ${pressStart2P.className}`}
+      >
         More from {genre}
       </h1>
       {searchedResults.map((anime) => (

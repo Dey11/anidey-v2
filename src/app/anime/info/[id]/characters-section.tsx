@@ -1,12 +1,17 @@
 import { AnimeInfo } from "@/types/anilist";
+import { Press_Start_2P } from "next/font/google";
 import Image from "next/image";
+
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 export const CharSection = ({ info }: { info: AnimeInfo | null }) => {
   if (info?.characters.length === 0) return <div></div>;
 
   return (
     <div className="pt-12">
-      <h1 className="text-center text-2xl font-bold tracking-wide text-yellow-500 sm:text-left">
+      <h1
+        className={`text-center text-xl font-bold tracking-wide text-yellow-500 sm:text-left ${pressStart2P.className}`}
+      >
         Characters & Voice Actors
       </h1>
 
@@ -39,7 +44,7 @@ const VoiceActorDiv = ({
   characterImage: string;
 }) => {
   if (!characterImage || !vaImage || !characterName || !vaName)
-    return <div className="text-xl text-rose-500"></div>;
+    return <div className="text-xl text-[#E11D48]"></div>;
 
   return (
     <div className="relative h-96 w-32 rounded-[50px] bg-rose-600 text-center font-semibold text-black sm:w-36">

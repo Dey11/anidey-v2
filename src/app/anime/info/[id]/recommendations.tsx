@@ -9,7 +9,10 @@ import {
 import { AnimeInfo, Recommendation } from "@/types/anilist";
 import clsx from "clsx";
 import { Library } from "lucide-react";
+import { Press_Start_2P } from "next/font/google";
 import Link from "next/link";
+
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
   const color = "text-[" + info?.color + "]";
@@ -20,7 +23,9 @@ export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
   return (
     <div className="pt-2">
       {color && (
-        <h1 className="text-center text-2xl font-bold text-red-500 sm:text-left">
+        <h1
+          className={`text-center text-xl font-bold text-red-500 sm:text-left ${pressStart2P.className}`}
+        >
           More like{" "}
           <span className={clsx(color)}>
             {info?.title.english ? info?.title.english : info?.title.romaji}
@@ -52,7 +57,7 @@ const RecommendationsCarouselRow = ({ list }: { list: Recommendation[] }) => {
               <div className="max-h-fit max-w-fit" key={anime.id}>
                 <AnimeCard anime={anime} />
                 <div className="mb-10">
-                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-rose-500 sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
+                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
                     {anime.title.english
                       ? anime.title.english
                       : anime.title.romaji}

@@ -1,8 +1,11 @@
+import { Poppins } from "next/font/google";
 import Link from "next/link";
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export const Footer = () => {
   return (
-    <footer className="mx-auto max-w-[1440px] py-6">
+    <footer className={`mx-auto max-w-[1440px] px-2 py-7 ${poppins.className}`}>
       <div className="flex justify-between">
         <Link
           href={"/anime"}
@@ -11,7 +14,7 @@ export const Footer = () => {
           Anidey
         </Link>
         <div className="flex items-center gap-x-2">
-          <p>Join Community:</p>
+          <p className="font-semibold">Join Community:</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -34,8 +37,8 @@ export const Footer = () => {
           </svg>
         </div>
       </div>
-      <div className="flex justify-between pt-3 text-sm">
-        <div className="flex gap-x-2">
+      <div className="justify-between pt-3 text-xs lg:flex">
+        <div className="flex justify-between gap-x-4 lg:justify-normal">
           <p>Privacy Policy</p>
           <p>Terms of Service</p>
           <a href="https://ko-fi.com/dey11">
@@ -44,7 +47,7 @@ export const Footer = () => {
             </p>
           </a>
         </div>
-        <h3>
+        <h3 className="pt-3 text-xs lg:pt-0">
           Anidey does not store any files on our server, we only provide links
           to the media which is hosted on 3rd party services.
         </h3>

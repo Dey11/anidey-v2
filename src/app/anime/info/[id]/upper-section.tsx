@@ -5,8 +5,11 @@ import { getEpisodeList } from "@/lib/anilistApi/getStreamingLink";
 import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
 import { Play } from "lucide-react";
+import { DotGothic16 } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+
+const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
 
 export const UpperSection = async ({
   info,
@@ -23,7 +26,7 @@ export const UpperSection = async ({
     episodeId = await getEpisodeList(animeId!);
   }
   return (
-    <div className="gap-x-5 sm:flex">
+    <div className={`gap-x-5 sm:flex`}>
       <div className="relative mx-auto h-96 w-72 bg-slate-400">
         <Image
           src={info?.image as string}
@@ -38,7 +41,9 @@ export const UpperSection = async ({
       </div>
 
       <div className="w-full">
-        <h1 className="pt-5 text-center text-2xl sm:pt-0 sm:text-left">
+        <h1
+          className={`pt-5 text-center text-2xl sm:pt-0 sm:text-left ${dotgotchic16.className}`}
+        >
           {info?.title.english ? info?.title.english : info?.title.romaji}
         </h1>
 
@@ -56,7 +61,7 @@ export const UpperSection = async ({
         <div className="flex w-full flex-row justify-between pt-5 text-sm font-light uppercase sm:justify-normal sm:gap-x-40">
           <div className="flex flex-col gap-y-3">
             <p>
-              Rating: <span className="text-green-500">{info?.rating}</span>
+              Rating: <span className="text-[#2AF332]">{info?.rating}</span>
             </p>
 
             <p>Status: {info?.status}</p>
@@ -88,7 +93,7 @@ export const UpperSection = async ({
         <div className="">
           {episodeId ? (
             <Button
-              className="mx-auto mt-3 flex gap-1 font-bold text-rose-500 sm:mx-0 sm:w-20"
+              className="mx-auto mt-3 flex gap-1 font-bold text-[#E11D48] sm:mx-0 sm:w-20"
               variant={"secondary"}
               asChild
             >

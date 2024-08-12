@@ -7,13 +7,15 @@ import {
   Clock,
   History,
   Library,
-  Play,
   Star,
 } from "lucide-react";
 import clsx from "clsx";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { descriptionFormatter } from "@/lib/utils";
+import { Press_Start_2P } from "next/font/google";
+
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
   let animeId;
@@ -33,7 +35,7 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
   }
 
   let ratingColor = "text-yellow-500";
-  if (anime.rating >= 80) ratingColor = "text-green-500";
+  if (anime.rating >= 80) ratingColor = "text-[#2AF332]";
   else if (anime.rating <= 40) ratingColor = "text-red-500";
 
   const description = descriptionFormatter(anime.description);
@@ -73,9 +75,9 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
             )}
 
             {anime.status && (
-              <div className="flex items-center gap-x-1 pt-2 text-rose-500 sm:pt-0">
+              <div className="flex items-center gap-x-1 pt-2 text-[#E11D48] sm:pt-0">
                 <History />
-                <p className="text-sm font-semibold">{anime.status}</p>
+                <p className="text-sm font-extrabold">{anime.status}</p>
               </div>
             )}
 
@@ -124,8 +126,11 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
             variant={"outline"}
             className="border-slate-700 font-bold text-red-500"
           >
-            <Link href={`/anime/info/${anime.id}`}>
-              <BadgeInfo size={20} className="pr-1" />
+            <Link
+              href={`/anime/info/${anime.id}`}
+              className={`${pressStart2P.className} text-sm`}
+            >
+              <BadgeInfo size={24} className="pr-1" />
               Info
             </Link>
           </Button>

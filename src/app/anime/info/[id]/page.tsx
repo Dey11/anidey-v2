@@ -6,6 +6,9 @@ import { Recommendations } from "./recommendations";
 import WideGenreCardSection from "./wide-genre-cards";
 import { AnimeGenres } from "@/types/anilist";
 import { Metadata } from "next";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export async function generateMetadata({
   params,
@@ -32,7 +35,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   const genre = info?.genres[0];
 
   return (
-    <div className="mx-auto max-w-[1440px] px-2 pt-20">
+    <div className={`mx-auto max-w-[1440px] px-2 pt-20 ${poppins.className}`}>
       <UpperSection anilistId={params.id} info={info} />
       <CharSection info={info} />
       <RelatedToAnime info={info} />

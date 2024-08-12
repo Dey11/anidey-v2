@@ -12,6 +12,9 @@ import { RecentEpisodes, Relation, TrendingAnime } from "@/types/anilist";
 import Link from "next/link";
 import { CalendarRange, Clock, Library, Star } from "lucide-react";
 import clsx from "clsx";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 const SingleCarouselRow = ({
   list,
@@ -19,7 +22,9 @@ const SingleCarouselRow = ({
   list: TrendingAnime[] | RecentEpisodes[] | Relation[];
 }) => {
   if (!list)
-    return <div className="pt-5 text-2xl text-rose-500">No anime found...</div>;
+    return (
+      <div className="pt-5 text-2xl text-[#E11D48]">No anime found...</div>
+    );
 
   return (
     <Carousel
@@ -40,8 +45,8 @@ const SingleCarouselRow = ({
                 key={anime.id}
               >
                 <AnimeCard anime={anime} />
-                <div className="">
-                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-rose-500 sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
+                <div className={`${poppins.className}`}>
+                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
                     {anime.title.english
                       ? anime.title.english
                       : anime.title.romaji}
@@ -63,7 +68,7 @@ const SingleCarouselRow = ({
                           <p
                             className={clsx(
                               "text-[9px] sm:text-xs",
-                              anime.rating >= 80 && "text-green-500",
+                              anime.rating >= 80 && "text-[#2AF332]",
                               anime.rating >= 40 &&
                                 anime.rating < 80 &&
                                 "text-yellow-500",

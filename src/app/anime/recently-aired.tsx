@@ -10,6 +10,10 @@ import {
 import { RecentEpisodes } from "@/types/anilist";
 import Link from "next/link";
 import { Library } from "lucide-react";
+import { Press_Start_2P, Poppins } from "next/font/google";
+
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 const RecentlyAired = async () => {
   const recentlyAiredList = await fetchRecentlyAiredEpisodes(1, 10);
@@ -17,7 +21,9 @@ const RecentlyAired = async () => {
 
   return (
     <div className="mx-2 overflow-x-hidden">
-      <h1 className="pb-5 text-2xl font-bold text-rose-500">
+      <h1
+        className={`pb-5 text-xl font-bold text-[#E11D48] ${pressStart2P.className}`}
+      >
         Recently Aired Episodes
       </h1>
 
@@ -46,8 +52,8 @@ const RecentEpsCarouselRow = ({ list }: { list: RecentEpisodes[] }) => {
                 key={anime.id}
               >
                 <AnimeCard anime={anime} />
-                <div className="mb-8">
-                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-rose-500 sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
+                <div className={`mb-8 ${poppins.className}`}>
+                  <h1 className="max-w-28 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52">
                     {anime.title.english}
                   </h1>
 

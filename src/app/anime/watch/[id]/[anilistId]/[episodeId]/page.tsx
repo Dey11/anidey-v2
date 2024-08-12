@@ -6,6 +6,9 @@ import NameSection from "./name-section";
 import { Recommendations } from "@/app/anime/info/[id]/recommendations";
 import WideGenreCardSection from "@/app/anime/info/[id]/wide-genre-cards";
 import { Metadata } from "next";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 export async function generateMetadata({
   params,
@@ -41,7 +44,7 @@ const page = async ({
   const zoroId = animeInfo?.episodes[0].id.split("$")[0];
 
   return (
-    <div className="mx-auto max-w-[1440px] px-2 pt-20">
+    <div className={`mx-auto max-w-[1440px] px-2 pt-20 ${poppins.className}`}>
       <div className="justify-center gap-5 lg:flex">
         <VideoPlayer episodeId={episodeId!} />
         <EpisodesList

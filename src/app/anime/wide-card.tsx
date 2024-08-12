@@ -1,9 +1,13 @@
 import { fetchPopularAnime } from "@/lib/anilistApi/getLists";
-import { PopularAnime, SearchResult } from "@/types/anilist";
+import { PopularAnime } from "@/types/anilist";
 import Image from "next/image";
 import { Badge } from "../../components/ui/badge";
 import { CalendarRange, Clock, Star } from "lucide-react";
 import Link from "next/link";
+import { Press_Start_2P } from "next/font/google";
+
+const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+// const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
 const WideCardSection = async () => {
   const popularAnimeList = await fetchPopularAnime(1, 5);
@@ -11,7 +15,9 @@ const WideCardSection = async () => {
 
   return (
     <div className="mx-2 overflow-x-hidden">
-      <h1 className="pb-5 text-2xl font-bold text-rose-500">
+      <h1
+        className={`pb-5 text-xl font-bold text-[#E11D48] ${pressStart2P.className}`}
+      >
         Top Picks This Month
       </h1>
       {popularAnimeList.map((anime) => (
@@ -26,7 +32,7 @@ export default WideCardSection;
 const WideCard = ({ anime }: { anime: PopularAnime }) => {
   return (
     <Link href={`/anime/info/${anime.id}`}>
-      <div className="relative mb-2 h-[136px] overflow-hidden rounded-sm">
+      <div className={`rounded-sm} relative mb-2 h-[136px] overflow-hidden`}>
         <Image
           src={anime.cover}
           fill
