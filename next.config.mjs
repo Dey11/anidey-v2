@@ -15,6 +15,8 @@ const nextConfig = {
         hostname: "media.kitsu.io",
       },
     ],
+    loader: "custom",
+    loaderFile: "./loader.tsx",
   },
   crossOrigin: "anonymous",
 };
