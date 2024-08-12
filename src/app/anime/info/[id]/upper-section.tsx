@@ -69,7 +69,7 @@ export const UpperSection = async ({
               Rating:{" "}
               <span
                 className={clsx(
-                  "text-[9px] sm:text-xs",
+                  "",
                   info!.rating >= 80 && "text-[#2AF332]",
                   info!.rating >= 40 && info!.rating < 80 && "text-yellow-500",
                   info!.rating <= 40 && "text-red-500",
@@ -108,7 +108,7 @@ export const UpperSection = async ({
         <div className="">
           {episodeId ? (
             <Button
-              className={`mx-auto mt-3 flex gap-1 font-bold text-[#E11D48] sm:mx-0 sm:w-20 ${pressStart2P.className}`}
+              className={`mx-auto mt-3 flex gap-1 font-bold text-[#E11D48] sm:mx-0 sm:w-20`}
               variant={"secondary"}
               asChild
             >
@@ -116,7 +116,9 @@ export const UpperSection = async ({
                 href={`/anime/watch/${animeId}/${anilistId}/${episodeId.episodes[0].episodeId}`}
               >
                 <Play size={15} />
-                Play
+                <span className={`${pressStart2P.className} text-sm`}>
+                  Play
+                </span>
               </Link>
             </Button>
           ) : (
