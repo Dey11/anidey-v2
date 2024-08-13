@@ -60,7 +60,7 @@ const InputBar = () => {
   return (
     <div className="relative">
       <Input
-        className="relative h-8 w-48 border-0 bg-white font-semibold text-black placeholder:text-gray-500 sm:h-10 sm:w-64 md:w-72 lg:w-96"
+        className="relative h-8 w-48 border-0 bg-white font-semibold capitalize text-black placeholder:text-gray-500 sm:h-10 sm:w-64 md:w-72 lg:w-96"
         placeholder="Search"
         value={searchData.query}
         onChange={(e) =>

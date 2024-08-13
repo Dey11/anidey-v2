@@ -22,9 +22,11 @@ const AnimeCard = ({
         alt={anime.title.english ? anime.title.english : anime.title.romaji}
         src={anime.image}
       />
-      <div className="relative left-1 top-2 z-10">
+      <div className="relative left-1 top-2">
         <Info size={16} />
       </div>
+
+      <div className="hover:shadow-3xl absolute left-0 top-0 z-10 h-48 w-28 items-center justify-center bg-transparent hover:bg-black hover:bg-opacity-30 md:h-72 md:w-52"></div>
     </div>
   );
 };

@@ -58,8 +58,8 @@ const SingleCarouselRow = ({
                     <div className="flex items-center gap-x-1 pt-1 sm:gap-x-2">
                       {anime.totalEpisodes && (
                         <div className="flex items-center sm:gap-x-1">
-                          <Library size={16} />
-                          <p className="text-[9px] sm:text-xs">
+                          <Library size={16} className="" />
+                          <p className="pt-[2px] text-[9px] sm:text-xs">
                             {anime.totalEpisodes}
                           </p>
                         </div>
@@ -70,12 +70,12 @@ const SingleCarouselRow = ({
                           <Star size={16} />
                           <p
                             className={clsx(
-                              "text-[9px] sm:text-xs",
+                              "pt-[2px] text-[9px] font-bold sm:text-xs",
                               anime.rating >= 80 && "text-[#2AF332]",
                               anime.rating >= 40 &&
                                 anime.rating < 80 &&
-                                "text-yellow-500",
-                              anime.rating <= 40 && "text-red-500",
+                                "text-[#FFB800]",
+                              anime.rating <= 40 && "text-[#C30000]",
                             )}
                           >
                             {anime.rating}
@@ -86,7 +86,7 @@ const SingleCarouselRow = ({
                       {anime.releaseDate && (
                         <div className="flex items-center sm:gap-x-1">
                           <CalendarRange size={16} />
-                          <p className="text-[9px] sm:text-xs">
+                          <p className="pt-[2px] text-[9px] sm:text-xs">
                             {anime.releaseDate}
                           </p>
                         </div>

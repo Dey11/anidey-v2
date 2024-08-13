@@ -24,7 +24,7 @@ export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
     <div className="pt-2">
       {color && (
         <h1
-          className={`text-center text-xl font-bold text-red-500 sm:text-left ${pressStart2P.className}`}
+          className={`text-center text-xl font-bold text-[#E11D48] sm:text-left ${pressStart2P.className}`}
         >
           More like{" "}
           <span className={clsx(color)}>

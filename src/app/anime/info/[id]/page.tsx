@@ -18,8 +18,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const response = await getAnimeInfo(params.id);
   const description = response?.description;
-  const title = response?.title.english || response?.title.romaji;
-  const img = response?.cover;
+  const title =
+    response?.title?.english || response?.title?.romaji || "Not Found";
+  const img = response?.cover || "";
   return {
     title,
     description,
@@ -31,8 +32,15 @@ export async function generateMetadata({
 
 const page = async ({ params }: { params: { id: string } }) => {
   const info = await getAnimeInfo(params.id);
+  console.log(info);
   // @ts-ignore
-  if (info.message) return <div>Not Found</div>;
+  if (info.message) {
+    console.log("Not Found");
+    return (
+      <div className="h-dvh pt-24 text-center text-3xl">Anime Not Found</div>
+    );
+  }
+
   const genre = info?.genres[0];
 
   return (

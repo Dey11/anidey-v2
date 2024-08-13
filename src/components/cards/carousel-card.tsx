@@ -2,7 +2,6 @@ import { TrendingAnime } from "@/types/anilist";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import {
-  BadgeInfo,
   CalendarRange,
   Clock,
   History,
@@ -35,14 +34,14 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
       .replace(/[^a-zA-Z0-9-]/g, "");
   }
 
-  let ratingColor = "text-yellow-500";
+  let ratingColor = "text-[#FFB800]";
   if (anime.rating >= 80) ratingColor = "text-[#2AF332]";
-  else if (anime.rating <= 40) ratingColor = "text-red-500";
+  else if (anime.rating <= 40) ratingColor = "text-[#C30000]";
 
   const description = descriptionFormatter(anime.description);
 
   return (
-    <div className="relative mb-10 h-[560px] bg-red-500">
+    <div className="relative mb-10 h-[560px] bg-[#C30000]">
       <Image
         src={anime.cover}
         fill
@@ -92,7 +91,7 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
             {anime.rating && (
               <div className="flex items-center gap-x-1 pt-2 sm:pt-0">
                 <Star size={20} />
-                <p className={clsx("text-sm font-semibold", ratingColor)}>
+                <p className={clsx("text-sm font-bold", ratingColor)}>
                   {anime.rating}
                 </p>
               </div>
@@ -115,7 +114,7 @@ const CarouselCard = ({ anime }: { anime: TrendingAnime }) => {
             <Button
               size={"lg"}
               variant={"outline"}
-              className="border-slate-700 font-bold text-red-500"
+              className="border-slate-700 font-bold text-[#C30000]"
             >
               <Play size={20} className="pr-1" />
               Play

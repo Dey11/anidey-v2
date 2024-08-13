@@ -12,6 +12,7 @@ const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
   const [streamingLinks, setStreamingLinks] =
     useState<AniwatchEpisodeLink | null>(null);
   const searchParams = useSearchParams();
+  const [error, setError] = useState<boolean>(false);
 
   const getLinks = async () => {
     try {
@@ -38,7 +39,7 @@ const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
         <p className="text-sm">
           Anidey provides an ad-free experience. You can help us manage our
           costs by donating{" "}
-          <a href="https://ko-fi.com/dey11" className="underline">
+          <a href="https://ko-fi.com/anidey" className="underline">
             here
           </a>{" "}
           or by simply sharing the website. Thanks :3

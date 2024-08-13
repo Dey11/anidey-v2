@@ -41,6 +41,14 @@ const page = async ({
   const anilistId = params.anilistId;
   const episodeId = params.episodeId;
   const animeInfo = await getAnimeInfo(anilistId);
+
+  // @ts-ignore
+  if (animeInfo?.message) {
+    return (
+      <div className="h-dvh pt-24 text-center text-3xl">Anime Not Found</div>
+    );
+  }
+
   const zoroId = animeInfo?.episodes[0].id.split("$")[0];
 
   return (

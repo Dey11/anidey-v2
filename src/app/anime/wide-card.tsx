@@ -32,7 +32,7 @@ export default WideCardSection;
 const WideCard = ({ anime }: { anime: PopularAnime }) => {
   return (
     <Link href={`/anime/info/${anime.id}`}>
-      <div className={`rounded-sm} relative mb-2 h-[136px] overflow-hidden`}>
+      <div className={`relative mb-2 h-[136px] overflow-hidden rounded-md`}>
         <Image
           src={anime.cover}
           fill

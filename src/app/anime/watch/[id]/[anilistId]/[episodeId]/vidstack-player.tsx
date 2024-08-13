@@ -14,17 +14,25 @@ export const VidstackPlayer = ({
 }: {
   video: AniwatchEpisodeLink | null;
 }) => {
-  // console.log(video);
+  // @ts-ignore
+  if (video.message) {
+    return (
+      <div className="py-5 text-center text-3xl">
+        Video Not Found. Please make sure the link is correct, or reload the
+        page. You may also try switching between episodes.
+      </div>
+    );
+  }
 
-  const thumbnail = video?.tracks.filter((track) => {
+  const thumbnail = video?.tracks?.filter((track) => {
     return track.kind === "thumbnail";
   });
 
-  const defaultSubtitle = video?.tracks.filter((track) => {
+  const defaultSubtitle = video?.tracks?.filter((track) => {
     return track.kind === "captions" && track.label === "English";
   });
 
-  const captions = video?.tracks.filter((track) => {
+  const captions = video?.tracks?.filter((track) => {
     return track.kind === "captions";
   });
 

@@ -10,7 +10,7 @@ export const CharSection = ({ info }: { info: AnimeInfo | null }) => {
   return (
     <div className="pt-12">
       <h1
-        className={`text-center text-xl font-bold tracking-wide text-yellow-500 sm:text-left ${pressStart2P.className}`}
+        className={`text-center text-xl font-bold tracking-wide text-[#FFB800] sm:text-left ${pressStart2P.className}`}
       >
         Characters & Voice Actors
       </h1>

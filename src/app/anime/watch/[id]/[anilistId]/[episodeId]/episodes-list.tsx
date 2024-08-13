@@ -6,7 +6,6 @@ import {
   getEpisodeList,
 } from "@/lib/anilistApi/getStreamingLink";
 import { LayoutGrid, LibraryBig } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,15 +23,19 @@ const EpisodesList = ({
   const [episodes, setEpisodes] = useState<AniwatchEpisodeList>();
   const noOfEpisodes = episodes?.totalEpisodes;
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
+  const [error, setError] = useState<boolean>(false);
 
   const fetchEpisodes = async () => {
     try {
       const episodeList = await getEpisodeList(zoroId);
       if (episodeList) {
         setEpisodes(episodeList);
+      } else {
+        setError(true);
       }
     } catch (err) {
       console.error(err);
+      setError(true);
     }
   };
 
@@ -40,10 +43,14 @@ const EpisodesList = ({
     fetchEpisodes();
   }, [zoroId]);
 
+  if (error) {
+    return <div className="text-center text-3xl">Episodes Not Found</div>;
+  }
+
   return (
     <div className="">
       <div className="flex h-[30px] items-center justify-end gap-x-2 px-3">
-        <div className={viewMode == "list" ? "text-red-500" : ""}>
+        <div className={viewMode == "list" ? "text-[#C30000]" : ""}>
           <LibraryBig
             onClick={() => {
               // window.localStorage.setItem("viewMode", "list");
@@ -51,7 +58,7 @@ const EpisodesList = ({
             }}
           />
         </div>
-        <div className={viewMode == "grid" ? "text-red-500" : ""}>
+        <div className={viewMode == "grid" ? "text-[#C30000]" : ""}>
           <LayoutGrid
             onClick={() => {
               // window.localStorage.setItem("viewMode", "grid");
