@@ -32,7 +32,6 @@ export async function generateMetadata({
 
 const page = async ({ params }: { params: { id: string } }) => {
   const info = await getAnimeInfo(params.id);
-  console.log(info);
   // @ts-ignore
   if (info.message) {
     console.log("Not Found");
