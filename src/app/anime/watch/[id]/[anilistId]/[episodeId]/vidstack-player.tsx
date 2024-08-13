@@ -3,6 +3,7 @@
 import "@vidstack/react/player/styles/default/theme.css";
 import "@vidstack/react/player/styles/default/layouts/video.css";
 import { MediaPlayer, MediaProvider, Track } from "@vidstack/react";
+
 import {
   defaultLayoutIcons,
   DefaultVideoLayout,
@@ -36,18 +37,18 @@ export const VidstackPlayer = ({
     return track.kind === "captions";
   });
 
-  // console.log(captions);
-
   return (
     <div className="">
       <div className="w-full">
         <MediaPlayer
           title={video?.anilistId || ""}
           src={video?.sources[0].url || ""}
+          crossOrigin
         >
           <MediaProvider>
             {captions!.map((track) => (
               <Track
+                key={track.label}
                 src={track.file || ""}
                 kind="subtitles"
                 label={track.label || ""}

@@ -6,13 +6,18 @@ import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
 import clsx from "clsx";
 import { Flower, Leaf, Play, Sun } from "lucide-react";
-import { DotGothic16, Montserrat, Press_Start_2P } from "next/font/google";
+import {
+  DotGothic16,
+  Inter,
+  Montserrat,
+  Press_Start_2P,
+} from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
+const inter = Inter({ weight: "400", subsets: ["latin"] });
 
 export const UpperSection = async ({
   info,
@@ -62,7 +67,7 @@ export const UpperSection = async ({
         </div>
 
         <div
-          className={`flex w-full flex-row justify-between pt-5 text-sm font-light uppercase sm:justify-normal sm:gap-x-40 ${dotgotchic16.className}`}
+          className={`flex w-full flex-row justify-between pt-5 text-sm font-light uppercase sm:justify-normal sm:gap-x-40 ${inter.className}`}
         >
           <div className="flex flex-col gap-y-3">
             <p>
@@ -92,7 +97,7 @@ export const UpperSection = async ({
           <div className="flex flex-col gap-y-3">
             <p>Studio: {info?.studios}</p>
 
-            <p className="inline-flex gap-x-2">
+            <p className="flex items-center gap-x-1">
               Season: {info?.season}
               <span>
                 {(info?.season.toLowerCase() == "fall" ||
@@ -107,7 +112,7 @@ export const UpperSection = async ({
         </div>
 
         <div className="pt-5 text-sm font-light">
-          <ScrollArea className={`sm:h-20 md:h-24 ${dotgotchic16.className}`}>
+          <ScrollArea className={`sm:h-20 md:h-24 ${inter.className}`}>
             <p className="leading-6 tracking-wider">
               <span className="uppercase">Description:</span>{" "}
               <span>{descriptionFormatter(info?.description as string)}</span>
