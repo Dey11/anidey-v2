@@ -7,6 +7,7 @@ import { Recommendations } from "@/app/anime/info/[id]/recommendations";
 import WideGenreCardSection from "@/app/anime/info/[id]/wide-genre-cards";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { auth } from "@/auth";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -41,6 +42,9 @@ const page = async ({
   const anilistId = params.anilistId;
   const episodeId = params.episodeId;
   const animeInfo = await getAnimeInfo(anilistId);
+  const coverImg = animeInfo?.cover;
+  const session = await auth();
+  const user = session?.user?.id;
 
   // @ts-ignore
   if (animeInfo?.message) {
@@ -54,7 +58,13 @@ const page = async ({
   return (
     <div className={`mx-auto max-w-[1440px] px-2 pt-20 ${poppins.className}`}>
       <div className="justify-center gap-5 lg:flex">
-        <VideoPlayer episodeId={episodeId!} />
+        <VideoPlayer
+          episodeId={episodeId!}
+          user={user}
+          animeId={animeId}
+          coverImg={coverImg || ""}
+          anilistId={anilistId}
+        />
         <EpisodesList
           animeId={animeId}
           anilistId={anilistId}
