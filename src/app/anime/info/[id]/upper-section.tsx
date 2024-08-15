@@ -6,12 +6,7 @@ import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
 import clsx from "clsx";
 import { Flower, Leaf, Play, Sun } from "lucide-react";
-import {
-  DotGothic16,
-  Inter,
-  Montserrat,
-  Press_Start_2P,
-} from "next/font/google";
+import { Inter, Montserrat, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,6 +23,9 @@ export const UpperSection = async ({
 }) => {
   let animeId = info?.episodes[0]?.id.split("$")[0];
   let episodeId;
+
+  console.log(info?.studios);
+
   if (!animeId) {
     episodeId = null;
   } else {
@@ -92,22 +90,28 @@ export const UpperSection = async ({
               {info?.endDate.month}. {info?.endDate.year}
             </p>
 
-            <p>Episodes: {info?.totalEpisodes}</p>
+            {info?.totalEpisodes && <p>Episodes: {info?.totalEpisodes}</p>}
           </div>
           <div className="flex flex-col gap-y-3">
-            <p>Studio: {info?.studios}</p>
+            {info?.studios.length ? (
+              <p>Studio: {info?.studios}</p>
+            ) : (
+              <p>Studio: Unknown</p>
+            )}
 
-            <p className="flex items-center gap-x-1">
-              Season: {info?.season}
-              <span>
-                {(info?.season.toLowerCase() == "fall" ||
-                  info?.season.toLowerCase() == "autumn") && <Leaf />}
-              </span>
-              <span>{info?.season.toLowerCase() == "summer" && <Sun />}</span>
-              <span>
-                {info?.season.toLowerCase() == "spring" && <Flower />}
-              </span>
-            </p>
+            {info?.season && (
+              <p className="flex items-center gap-x-1">
+                Season: {info?.season}
+                <span>
+                  {(info?.season.toLowerCase() == "fall" ||
+                    info?.season.toLowerCase() == "autumn") && <Leaf />}
+                </span>
+                <span>{info?.season.toLowerCase() == "summer" && <Sun />}</span>
+                <span>
+                  {info?.season.toLowerCase() == "spring" && <Flower />}
+                </span>
+              </p>
+            )}
           </div>
         </div>
 
