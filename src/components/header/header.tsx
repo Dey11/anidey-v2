@@ -7,7 +7,7 @@ import Sidebar from "./sidebar";
 const Header = () => {
   return (
     <header className="bg-black bg-opacity-40">
-      <div className="mx-auto px-2 py-2 lg:px-0">
+      <div className="mx-auto px-0 py-2 lg:px-0 xl:px-2">
         <ul className="flex items-center justify-between px-5">
           <li>
             <Link href={"/anime"}>

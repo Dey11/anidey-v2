@@ -64,8 +64,12 @@ const RecommendationsCarouselRow = ({ list }: { list: Recommendation[] }) => {
                   </h1>
 
                   <div className="flex items-center pt-1">
-                    <Library size={16} />
-                    <p className="pl-1 pt-1 text-xs">{anime.episodes}</p>
+                    {anime.episodes && (
+                      <>
+                        <Library size={16} className="pt-[1px]" />
+                        <p className="pl-1 pt-1 text-xs">{anime.episodes}</p>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
