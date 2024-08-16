@@ -9,7 +9,6 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const VideoPlayer = ({
-  episodeId,
   user,
   animeId,
   coverImg,
@@ -18,14 +17,13 @@ const VideoPlayer = ({
   coverImg: string;
   anilistId: string;
   animeId: string;
-  episodeId: string;
   user: string | undefined;
 }) => {
   const [streamingLinks, setStreamingLinks] =
     useState<AniwatchEpisodeLink | null>(null);
   const searchParams = useSearchParams();
 
-  const episodeIdOfAnime = `${episodeId}?ep=${searchParams.get("ep")}`;
+  const episodeIdOfAnime = `${animeId}?ep=${searchParams.get("ep")}`;
   const getLinks = async () => {
     try {
       const links = await getStreamingLinks(episodeIdOfAnime);

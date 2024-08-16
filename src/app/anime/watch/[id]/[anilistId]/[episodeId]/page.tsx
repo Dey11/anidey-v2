@@ -40,7 +40,6 @@ const page = async ({
 }) => {
   const animeId = params.id;
   const anilistId = params.anilistId;
-  const episodeId = params.episodeId;
   const animeInfo = await getAnimeInfo(anilistId);
   const coverImg = animeInfo?.cover;
   const session = await auth();
@@ -59,18 +58,12 @@ const page = async ({
     <div className={`mx-auto max-w-[1440px] px-2 pt-20 ${poppins.className}`}>
       <div className="justify-center gap-5 lg:flex">
         <VideoPlayer
-          episodeId={episodeId!}
           user={user}
           animeId={animeId}
           coverImg={coverImg || ""}
           anilistId={anilistId}
         />
-        <EpisodesList
-          animeId={animeId}
-          anilistId={anilistId}
-          zoroId={zoroId!}
-          episodeId={episodeId}
-        />
+        <EpisodesList anilistId={anilistId} zoroId={zoroId!} />
       </div>
       <NameSection animeInfo={animeInfo!} />
       <div className="pt-12 xl:grid xl:grid-cols-6">

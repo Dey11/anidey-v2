@@ -5,25 +5,25 @@ import {
   AniwatchEpisodeList,
   getEpisodeList,
 } from "@/lib/anilistApi/getStreamingLink";
+import clsx from "clsx";
 import { LayoutGrid, LibraryBig } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const EpisodesList = ({
-  animeId,
   anilistId,
-  episodeId,
   zoroId,
 }: {
-  animeId: string;
   anilistId: string;
-  episodeId: string;
   zoroId: string;
 }) => {
   const [episodes, setEpisodes] = useState<AniwatchEpisodeList>();
-  const noOfEpisodes = episodes?.totalEpisodes;
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [error, setError] = useState<boolean>(false);
+
+  const searchParams = useSearchParams();
+  const episodeIdOfAnime = `${zoroId}?ep=${searchParams.get("ep")}`;
 
   const fetchEpisodes = async () => {
     try {
@@ -70,22 +70,32 @@ const EpisodesList = ({
       {viewMode == "list" ? (
         <ScrollArea className="h-dvh max-h-[550px] w-[304px] min-w-full max-w-[320px]">
           <div className="flex flex-col gap-1">
-            {episodes?.episodes.map((episode) => (
-              <Link
-                href={`/anime/watch/${animeId}/${anilistId}/${episode.episodeId}`}
-                key={episode.episodeId}
-              >
-                <div className={"min-h-16 gap-2 rounded-md bg-[#171717] p-2"}>
-                  <div className="flex flex-col">
-                    <p className="text-sm">
-                      {episode.title
-                        ? "Episode " + episode.number + ": " + episode.title
-                        : "Episode: " + episode.number}
-                    </p>
+            {episodes?.episodes.map((episode) => {
+              console.log(episode.episodeId == episodeIdOfAnime);
+              return (
+                <Link
+                  href={`/anime/watch/${zoroId}/${anilistId}/${episode.episodeId}`}
+                  key={episode.episodeId}
+                >
+                  <div
+                    className={clsx(
+                      "min-h-16 gap-2 rounded-md p-2",
+                      episode.episodeId == episodeIdOfAnime
+                        ? "bg-rose-500"
+                        : "bg-[#171717]",
+                    )}
+                  >
+                    <div className="flex flex-col">
+                      <p className="text-sm">
+                        {episode.title
+                          ? "Episode " + episode.number + ": " + episode.title
+                          : "Episode: " + episode.number}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </ScrollArea>
       ) : (
@@ -93,13 +103,16 @@ const EpisodesList = ({
           <div className="grid grid-cols-6 gap-2">
             {episodes?.episodes.map((episode) => (
               <Link
-                href={`/anime/watch/${animeId}/${anilistId}/${episode.episodeId}`}
+                href={`/anime/watch/${zoroId}/${anilistId}/${episode.episodeId}`}
                 key={episode.episodeId}
               >
                 <div
-                  className={
-                    "h-10 w-10 rounded-md bg-[#171717] p-2 text-center text-sm"
-                  }
+                  className={clsx(
+                    "h-10 w-10 rounded-md bg-[#171717] p-2 text-center text-sm",
+                    episode.episodeId == episodeIdOfAnime
+                      ? "bg-rose-500"
+                      : "bg-[#171717]",
+                  )}
                 >
                   {episode.number}
                 </div>
