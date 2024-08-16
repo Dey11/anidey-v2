@@ -33,7 +33,6 @@ const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const ContinueWatching = async () => {
   const watchingList = await getWatchingList();
-  console.log(watchingList);
   if (!watchingList?.length || watchingList == null) return <div></div>;
 
   return (
