@@ -33,7 +33,8 @@ const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const ContinueWatching = async () => {
   const watchingList = await getWatchingList();
-  if (watchingList == null) return <div></div>;
+  console.log(watchingList);
+  if (!watchingList?.length || watchingList == null) return <div></div>;
 
   return (
     <div className="mx-2 overflow-x-hidden">
