@@ -49,7 +49,7 @@ export interface AniwatchEpisodeLink {
     url: string;
     type: string;
   }[];
-  anilistId: string;
+  anilistID: string;
   malId: string;
 }
 

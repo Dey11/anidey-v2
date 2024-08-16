@@ -71,7 +71,6 @@ const EpisodesList = ({
         <ScrollArea className="h-dvh max-h-[550px] w-[304px] min-w-full max-w-[320px]">
           <div className="flex flex-col gap-1">
             {episodes?.episodes.map((episode) => {
-              console.log(episode.episodeId == episodeIdOfAnime);
               return (
                 <Link
                   href={`/anime/watch/${zoroId}/${anilistId}/${episode.episodeId}`}

@@ -47,7 +47,6 @@ const VideoPlayer = ({
             episode={episodeIdOfAnime}
             animeId={animeId}
             coverImg={coverImg}
-            anilistId={anilistId}
           />
         )}
       </div>

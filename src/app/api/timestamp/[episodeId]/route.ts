@@ -27,10 +27,13 @@ export async function GET(
   }
 
   const userId = isAuthenticated;
-  const getTimestamp = await prisma.anime.findFirst({
+  const getTimestamp = await prisma.watchingList.findFirst({
     where: {
       userId: userId,
       episodeId: episodeId,
+    },
+    select: {
+      timestamp: true,
     },
   });
 

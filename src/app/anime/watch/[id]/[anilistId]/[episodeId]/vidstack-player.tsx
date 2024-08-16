@@ -12,7 +12,10 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
-import { AniwatchEpisodeLink } from "@/lib/anilistApi/getStreamingLink";
+import {
+  AniwatchEpisodeLink,
+  getEpisodeList,
+} from "@/lib/anilistApi/getStreamingLink";
 import { useEffect, useRef, useState } from "react";
 
 export const VidstackPlayer = ({
@@ -21,10 +24,8 @@ export const VidstackPlayer = ({
   episode,
   animeId,
   coverImg,
-  anilistId,
 }: {
   coverImg: string;
-  anilistId: string;
   animeId: string;
   episode: string;
   video: AniwatchEpisodeLink | null;
@@ -41,21 +42,40 @@ export const VidstackPlayer = ({
   }
 
   const [startTime, setStartTime] = useState<number>(0);
-  // const [loadPlayer, setLoadPlayer] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [number, setNumber] = useState<number>(0);
+  const [isFiller, setIsFiller] = useState<boolean>(false);
 
   const thumbnail = video?.tracks?.filter((track) => {
     return track.kind === "thumbnail";
   });
-
   const defaultSubtitle = video?.tracks?.filter((track) => {
     return track.kind === "captions" && track.label === "English";
   });
-
   const captions = video?.tracks?.filter((track) => {
     return track.kind === "captions";
   });
 
   const player = useRef<MediaPlayerInstance>(null);
+
+  const fetchEpisodes = async () => {
+    try {
+      const episodeList = await getEpisodeList(animeId);
+      if (episodeList) {
+        const res = episodeList.episodes.filter((ep) => {
+          if (ep.episodeId === episode) {
+            setTitle(ep.title);
+            setNumber(ep.number);
+            setIsFiller(ep.isFiller);
+          }
+        });
+      } else {
+        console.log("No episodes found");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const logTimestamp = () => {
     const isPaused = player.current?.paused;
@@ -75,10 +95,13 @@ export const VidstackPlayer = ({
         body: JSON.stringify({
           userId: user,
           episodeId: episode,
+          title: title,
+          number: number,
+          isFiller: isFiller,
           timestamp: time,
           animeId: animeId,
-          anilistId: anilistId,
-          coverImg: coverImg,
+          anilistId: video!.anilistID,
+          image: coverImg,
         }),
       });
       const data = await res.json();
@@ -102,20 +125,19 @@ export const VidstackPlayer = ({
   };
 
   useEffect(() => {
+    console.log("useEffect");
+    fetchEpisodes();
     getTimestampFromDB();
-  }, [episode]);
-
-  useEffect(() => {
     const intervalId = setInterval(logTimestamp, 10000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [episode, title, number, isFiller]);
 
   return (
     <div className="">
       <div className="w-full">
         <MediaPlayer
           ref={player}
-          title={video?.anilistId || ""}
+          title={video?.anilistID || ""}
           src={video?.sources[0].url || ""}
           crossOrigin
           currentTime={startTime}

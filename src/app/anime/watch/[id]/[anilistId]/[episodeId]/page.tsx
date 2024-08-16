@@ -41,7 +41,7 @@ const page = async ({
   const animeId = params.id;
   const anilistId = params.anilistId;
   const animeInfo = await getAnimeInfo(anilistId);
-  const coverImg = animeInfo?.cover;
+  const coverImg = animeInfo?.image;
   const session = await auth();
   const user = session?.user?.id;
 

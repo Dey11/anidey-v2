@@ -4,6 +4,7 @@ import TopCarousel from "./top-carousel";
 import TopPicks from "./top-picks";
 import WideCardSection from "@/app/anime/wide-card";
 import { Suspense } from "react";
+import ContinueWatching from "./continue-watching";
 
 export const metadata: Metadata = {
   title: "Explore Anidey",
@@ -18,6 +19,9 @@ const page = () => {
         <TopCarousel />
       </Suspense>
       <div className="mx-auto max-w-[1440px]">
+        <Suspense>
+          <ContinueWatching />
+        </Suspense>
         <Suspense>
           <TopPicks />
         </Suspense>
