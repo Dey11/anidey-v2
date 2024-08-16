@@ -7,6 +7,7 @@ import { Recommendations } from "@/app/anime/info/[id]/recommendations";
 import WideGenreCardSection from "@/app/anime/info/[id]/wide-genre-cards";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { auth } from "@/auth";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -39,8 +40,10 @@ const page = async ({
 }) => {
   const animeId = params.id;
   const anilistId = params.anilistId;
-  const episodeId = params.episodeId;
   const animeInfo = await getAnimeInfo(anilistId);
+  const coverImg = animeInfo?.image;
+  const session = await auth();
+  const user = session?.user?.id;
 
   // @ts-ignore
   if (animeInfo?.message) {
@@ -54,13 +57,13 @@ const page = async ({
   return (
     <div className={`mx-auto max-w-[1440px] px-2 pt-20 ${poppins.className}`}>
       <div className="justify-center gap-5 lg:flex">
-        <VideoPlayer episodeId={episodeId!} />
-        <EpisodesList
+        <VideoPlayer
+          user={user}
           animeId={animeId}
+          coverImg={coverImg || ""}
           anilistId={anilistId}
-          zoroId={zoroId!}
-          episodeId={episodeId}
         />
+        <EpisodesList anilistId={anilistId} zoroId={zoroId!} />
       </div>
       <NameSection animeInfo={animeInfo!} />
       <div className="pt-12 xl:grid xl:grid-cols-6">

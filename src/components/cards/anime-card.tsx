@@ -6,7 +6,6 @@ import {
 } from "@/types/anilist";
 import { Info } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 const AnimeCard = ({
   anime,

@@ -8,19 +8,26 @@ import { VidstackPlayer } from "./vidstack-player";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
+const VideoPlayer = ({
+  user,
+  animeId,
+  coverImg,
+  anilistId,
+}: {
+  coverImg: string;
+  anilistId: string;
+  animeId: string;
+  user: string | undefined;
+}) => {
   const [streamingLinks, setStreamingLinks] =
     useState<AniwatchEpisodeLink | null>(null);
   const searchParams = useSearchParams();
-  const [error, setError] = useState<boolean>(false);
 
+  const episodeIdOfAnime = `${animeId}?ep=${searchParams.get("ep")}`;
   const getLinks = async () => {
     try {
-      const links = await getStreamingLinks(
-        `${episodeId}?ep=${searchParams.get("ep")}`,
-      );
+      const links = await getStreamingLinks(episodeIdOfAnime);
       setStreamingLinks(links);
-      // console.log(links, "here");
     } catch (err) {
       console.log(err);
     }
@@ -33,7 +40,15 @@ const VideoPlayer = ({ episodeId }: { episodeId: string }) => {
   return (
     <div className="flex w-full max-w-[1100px] flex-col">
       <div className="">
-        {streamingLinks && <VidstackPlayer video={streamingLinks} />}
+        {streamingLinks && (
+          <VidstackPlayer
+            video={streamingLinks}
+            user={user}
+            episode={episodeIdOfAnime}
+            animeId={animeId}
+            coverImg={coverImg}
+          />
+        )}
       </div>
       <div className="w-full rounded-b-lg bg-gradient-to-r from-[#E11D48] to-[#9916FF] p-2">
         <p className="text-sm">
