@@ -68,7 +68,7 @@ const EpisodesList = ({
         </div>
       </div>
       {viewMode == "list" ? (
-        <ScrollArea className="h-dvh max-h-[550px] w-[304px] min-w-full max-w-[320px]">
+        <ScrollArea className="h-dvh max-h-[580px] w-[304px] min-w-full max-w-[320px]">
           <div className="flex flex-col gap-1">
             {episodes?.episodes.map((episode) => {
               return (
@@ -98,7 +98,7 @@ const EpisodesList = ({
           </div>
         </ScrollArea>
       ) : (
-        <ScrollArea className="h-dvh max-h-[550px] w-full max-w-[320px] p-5">
+        <ScrollArea className="h-dvh max-h-[580px] w-full max-w-[320px] p-5">
           <div className="grid grid-cols-6 gap-2">
             {episodes?.episodes.map((episode) => (
               <Link
@@ -107,7 +107,7 @@ const EpisodesList = ({
               >
                 <div
                   className={clsx(
-                    "h-10 w-10 rounded-md bg-[#171717] p-2 text-center text-sm",
+                    "h-10 w-[38px] rounded-md bg-[#171717] p-2 text-center text-sm",
                     episode.episodeId == episodeIdOfAnime
                       ? "bg-rose-500"
                       : "bg-[#171717]",
