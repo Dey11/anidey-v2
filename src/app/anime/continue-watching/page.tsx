@@ -15,7 +15,7 @@ const page = async () => {
   const userId = session?.user?.id;
   if (!userId)
     return (
-      <div className="animes-center mx-auto flex min-h-dvh max-w-[1440px] justify-center gap-x-5 text-2xl">
+      <div className="mx-auto flex min-h-dvh max-w-[1440px] items-center justify-center gap-x-5 text-2xl">
         Please Sign In to continue
         <SignIn />
       </div>
@@ -23,7 +23,7 @@ const page = async () => {
   const watchingList = await getWatchingList();
   if (!watchingList?.length || watchingList == null)
     return (
-      <div className="animes-center mx-auto flex h-dvh max-w-[1440px] justify-center gap-x-5 text-2xl">
+      <div className="mx-auto flex h-dvh max-w-[1440px] items-center justify-center gap-x-5 text-2xl">
         Nothing to show here. Watch some episode and it'll appear here.
       </div>
     );
