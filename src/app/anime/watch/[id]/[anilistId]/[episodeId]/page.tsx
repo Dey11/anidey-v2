@@ -17,7 +17,9 @@ export async function generateMetadata({
   params: { episodeId: string; animeId: string };
 }): Promise<Metadata> {
   const response = await getAnimeInfo(params.animeId);
-  const title = response?.title?.english || response?.title?.romaji;
+  const title = response?.title?.english
+    ? response?.title?.english
+    : response?.title?.romaji;
   const description = `Stream ${title} episode ${params.episodeId} for free, without ads.`;
   const img = response?.cover;
   return {

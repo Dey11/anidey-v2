@@ -63,7 +63,7 @@ const ReportDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Flag size={16} />
+        <Flag size={16} className="cursor-pointer" />
       </DialogTrigger>
       <DialogContent>
         <form action={handleFormSubmit}>

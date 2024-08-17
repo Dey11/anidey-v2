@@ -1,4 +1,3 @@
-import { Press_Start_2P } from "next/font/google";
 import getWatchingList from "@/actions/getWatchingList";
 import {
   Carousel,
@@ -8,7 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Link from "next/link";
-import { Poppins } from "next/font/google";
+import { Poppins, Press_Start_2P } from "next/font/google";
 import { CalendarRange, Info, Library } from "lucide-react";
 import Image from "next/image";
 
@@ -25,6 +24,7 @@ type WatchingList = {
   userId: string;
   createdAt: Date;
   updatedAt: Date;
+  duration: number;
 };
 
 const poppinsSmall = Poppins({ weight: "400", subsets: ["latin"] });
@@ -59,7 +59,7 @@ const ContinueWatchingRow = ({
     <Carousel
       opts={{
         align: "start",
-        loop: true,
+        loop: false,
       }}
     >
       <CarouselContent className="mb-8">
@@ -88,6 +88,13 @@ const ContinueWatchingRow = ({
                   </div>
 
                   <div className="hover:shadow-3xl absolute left-0 top-0 z-10 h-48 w-28 items-center justify-center bg-transparent hover:bg-black hover:bg-opacity-30 md:h-72 md:w-52"></div>
+
+                  <div
+                    className={`absolute bottom-0 h-[4px] bg-red-500`}
+                    style={{
+                      width: `${(anime.timestamp / anime.duration) * 100}%`,
+                    }}
+                  ></div>
                 </div>
                 <div className={`${poppinsSmall.className}`}>
                   <h1

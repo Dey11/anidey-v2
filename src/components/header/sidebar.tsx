@@ -16,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import {
   AlignJustify,
   Clapperboard,
+  History,
   Home,
   Library,
   ListVideo,
@@ -42,25 +43,48 @@ const Sidebar = () => {
           <ScrollArea className={"h-[calc(100vh-150px)]"}>
             <nav>
               <ul>
-                {navElements.map((element) => (
-                  <li className="pb-5" key={element.name}>
-                    <SheetHeader>
-                      <SheetClose asChild>
-                        <Link href={element.link}>
-                          <SheetTitle>
-                            <span className="flex items-center gap-2 text-sm md:text-lg">
-                              {element.icon} {element.name}
-                            </span>
-                          </SheetTitle>
-                          <SheetDescription className="hidden pt-1 md:block">
-                            {element.description}
-                          </SheetDescription>
-                        </Link>
-                      </SheetClose>
-                    </SheetHeader>
-                    <Separator className="mt-2" />
-                  </li>
-                ))}
+                {navElements.map((element) => {
+                  return element.protected &&
+                    session.status == "authenticated" ? (
+                    <li className="pb-5" key={element.name}>
+                      <SheetHeader>
+                        <SheetClose asChild>
+                          <Link href={element.link}>
+                            <SheetTitle>
+                              <span className="flex items-center gap-2 text-sm md:text-lg">
+                                {element.icon} {element.name}
+                              </span>
+                            </SheetTitle>
+                            <SheetDescription className="hidden pt-1 md:block">
+                              {element.description}
+                            </SheetDescription>
+                          </Link>
+                        </SheetClose>
+                      </SheetHeader>
+                      <Separator className="mt-2" />
+                    </li>
+                  ) : (
+                    !element.protected && (
+                      <li className="pb-5" key={element.name}>
+                        <SheetHeader>
+                          <SheetClose asChild>
+                            <Link href={element.link}>
+                              <SheetTitle>
+                                <span className="flex items-center gap-2 text-sm md:text-lg">
+                                  {element.icon} {element.name}
+                                </span>
+                              </SheetTitle>
+                              <SheetDescription className="hidden pt-1 md:block">
+                                {element.description}
+                              </SheetDescription>
+                            </Link>
+                          </SheetClose>
+                        </SheetHeader>
+                        <Separator className="mt-2" />
+                      </li>
+                    )
+                  );
+                })}
               </ul>
             </nav>
 
@@ -87,47 +111,34 @@ const navElements = [
     link: "/",
     description: "Home page of Anidey",
     icon: <Home size={20} />,
+    protected: false,
   },
   {
     name: "Anime",
     link: "/anime",
     description: "Explore our vast library",
     icon: <Library size={20} />,
+    protected: false,
   },
-  // {
-  //   name: "Search",
-  //   link: "/anime/search",
-  //   description: "Search for your favourite anime",
-  //   icon: <Search size={20} />,
-  // },
   // {
   //   name: "Profile",
   //   link: "/profile",
   //   description: "Go to your profile section",
   //   icon: <User size={20} />,
+  //   protected: true,
   // },
-  // {
-  //   name: "Watch List",
-  //   link: "/watch-list",
-  //   description: "Choose what you'd like to watch next",
-  //   icon: <ListVideo size={20} />,
-  // },
-  // {
-  //   name: "Community",
-  //   link: "/discord",
-  //   description: "Join the Anidey community on Discord",
-  //   icon: <UsersRound size={20} />,
-  // },
+  {
+    name: "Continue Watching",
+    link: "/anime/continue-watching",
+    description: "Resume watching right from where you left",
+    icon: <History size={20} />,
+    protected: true,
+  },
   // {
   //   name: "Movies",
   //   link: "/anime/movies",
   //   description: "In the mood to sit back and relax?",
   //   icon: <Clapperboard size={20} />,
-  // },
-  // {
-  //   name: "Settings",
-  //   link: "/settings",
-  //   description: "Configure Anidey to your preferences",
-  //   icon: <Settings size={20} />,
+  //   protected: false,
   // },
 ];

@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 
-const getWatchingList = async () => {
+const getWatchingList = async (limit: number = 20) => {
   const session = await auth();
   const userId = session?.user?.id;
 
@@ -9,17 +9,21 @@ const getWatchingList = async () => {
     return null;
   }
 
-  const list = await prisma.watchingList.findMany({
-    where: {
-      userId,
-    },
-    take: 20,
-    orderBy: {
-      updatedAt: "desc",
-    },
-  });
-
-  return list;
+  try {
+    const list = await prisma.watchingList.findMany({
+      where: {
+        userId,
+      },
+      take: limit,
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
+    return list;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
 
 export default getWatchingList;

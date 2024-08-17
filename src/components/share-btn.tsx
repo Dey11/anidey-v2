@@ -24,7 +24,7 @@ const ShareBtn = () => {
     <Share2
       size={16}
       onClick={copyToClipboard}
-      className={copied ? "text-green-500" : ""}
+      className={copied ? "cursor-pointer text-green-500" : "cursor-pointer"}
     />
   );
 };
