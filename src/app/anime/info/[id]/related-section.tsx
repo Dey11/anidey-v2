@@ -6,7 +6,9 @@ import { Press_Start_2P } from "next/font/google";
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 export const RelatedToAnime = async ({ info }: { info: AnimeInfo | null }) => {
-  const color = "text-[" + info?.color + "]";
+  const color = "text-[#E11D48]";
+
+  if (info?.relations?.length === 0) return <div className="pt-12"></div>;
 
   return (
     <div className="pt-12">
