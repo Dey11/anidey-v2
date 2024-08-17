@@ -1,5 +1,8 @@
+import ReportDialog from "@/components/report-bug";
 import { AnimeInfo } from "@/types/anilist";
-import { Bell, Flag, Info } from "lucide-react";
+import { Bell } from "lucide-react";
+import InfoPageBtn from "./info-page-btn";
+import ShareBtn from "@/components/share-btn";
 
 const NameSection = ({ animeInfo }: { animeInfo: AnimeInfo }) => {
   let nextEpisode;
@@ -39,9 +42,9 @@ const NameSection = ({ animeInfo }: { animeInfo: AnimeInfo }) => {
         </div>
       </div>
       <div className="flex gap-x-2 pt-5">
-        <Info size={16} />
-        {/* <Share2 size={16} /> */}
-        <Flag size={16} />
+        <InfoPageBtn anilistId={animeInfo.id} />
+        <ShareBtn />
+        <ReportDialog />
       </div>
     </div>
   );

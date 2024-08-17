@@ -12,52 +12,74 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const body = await request.json();
+  try {
+    const body = await request.json();
 
-  if (
-    !body.userId ||
-    !body.episodeId ||
-    !body.timestamp ||
-    !body.animeId ||
-    !body.anilistId
-  ) {
-    console.log(
-      body.userId,
-      body.episodeId,
-      body.timestamp,
-      body.animeId,
-      body.anilistId,
-    );
+    if (
+      !body.userId ||
+      !body.episodeId ||
+      !body.timestamp ||
+      !body.animeId ||
+      !body.anilistId
+    ) {
+      return NextResponse.json({
+        message: "All fields are required",
+        status: false,
+      });
+    }
+
+    const updateTimestamp = await prisma.watchingList.upsert({
+      where: {
+        userId: isAuthenticated,
+        episodeId: body.episodeId,
+      },
+      update: {
+        timestamp: parseInt(body.timestamp),
+      },
+      create: {
+        userId: isAuthenticated,
+        episodeId: body.episodeId,
+        timestamp: parseInt(body.timestamp),
+        animeId: body.animeId,
+        anilistId: parseInt(body.anilistId),
+        image: body.image || "",
+        title: body.title || "",
+        episodeNo: parseInt(body.number) || 0,
+        isFiller: body.isFiller || false,
+        duration: parseInt(body.duration) || 0,
+      },
+    });
+
+    const addToHistory = await prisma.history.upsert({
+      where: {
+        userId: isAuthenticated,
+        episodeId: body.episodeId,
+      },
+      update: {
+        timestamp: parseInt(body.timestamp),
+      },
+      create: {
+        userId: isAuthenticated,
+        episodeId: body.episodeId,
+        animeId: body.animeId,
+        anilistId: parseInt(body.anilistId),
+        image: body.image || "",
+        title: body.title || "",
+        episodeNo: parseInt(body.number) || 0,
+        isFiller: body.isFiller || false,
+        duration: parseInt(body.duration) || 0,
+      },
+    });
+
     return NextResponse.json({
-      message: "All fields are required",
+      message: "Timestamp updated",
+      status: true,
+    });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({
+      message: "An error occurred",
       status: false,
     });
   }
-
-  // console.log(body.title, body.number, body.isFiller);
-
-  const updateTimestamp = await prisma.watchingList.upsert({
-    where: {
-      userId: body.userId,
-      episodeId: body.episodeId,
-    },
-    update: {
-      timestamp: parseInt(body.timestamp),
-    },
-    create: {
-      userId: body.userId,
-      episodeId: body.episodeId,
-      timestamp: parseInt(body.timestamp),
-      animeId: body.animeId,
-      anilistId: parseInt(body.anilistId),
-      image: body.image || "",
-      title: body.title || "",
-      episodeNo: body.number || 0,
-      isFiller: body.isFiller || false,
-    },
-  });
-  return NextResponse.json({
-    message: "Timestamp updated",
-    status: true,
-  });
 }

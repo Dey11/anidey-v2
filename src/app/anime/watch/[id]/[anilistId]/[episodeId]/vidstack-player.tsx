@@ -17,6 +17,7 @@ import {
   getEpisodeList,
 } from "@/lib/anilistApi/getStreamingLink";
 import { useEffect, useRef, useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 export const VidstackPlayer = ({
   video,
@@ -40,14 +41,14 @@ export const VidstackPlayer = ({
       </div>
     );
   }
-
+  const { toast } = useToast();
   const [startTime, setStartTime] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [number, setNumber] = useState<number>(0);
   const [isFiller, setIsFiller] = useState<boolean>(false);
 
   const thumbnail = video?.tracks?.filter((track) => {
-    return track.kind === "thumbnail";
+    return track.kind === "thumbnails";
   });
   const defaultSubtitle = video?.tracks?.filter((track) => {
     return track.kind === "captions" && track.label === "English";
@@ -79,12 +80,42 @@ export const VidstackPlayer = ({
 
   const logTimestamp = () => {
     const isPaused = player.current?.paused;
-    if (isPaused) return;
-    if (!user) return;
-    storeTimeInDB(player.current?.currentTime!);
+    const currentTime = player.current?.currentTime;
+    const duration = player.current?.duration;
+    if (isPaused || !episode || !duration || !currentTime || !user) return;
+    if (duration - currentTime < 180) {
+      completedEpisode();
+      return;
+    }
+    storeTimeInDB(currentTime, duration);
   };
 
-  const storeTimeInDB = async (time: number) => {
+  const completedEpisode = async () => {
+    if (!episode || !user) return;
+    try {
+      const res = await fetch("/api/completed-episode", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user,
+          episodeId: episode,
+        }),
+      });
+      const data = await res.json();
+      if (data.status) {
+        toast({
+          title: "Episode completed",
+          description: "Episode marked as watched",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const storeTimeInDB = async (time: number, duration: number) => {
     if (!user || !episode || time < 10) return;
     try {
       const res = await fetch("/api/timestamp", {
@@ -102,6 +133,7 @@ export const VidstackPlayer = ({
           animeId: animeId,
           anilistId: video!.anilistID,
           image: coverImg,
+          duration: duration,
         }),
       });
       const data = await res.json();
@@ -125,7 +157,6 @@ export const VidstackPlayer = ({
   };
 
   useEffect(() => {
-    console.log("useEffect");
     fetchEpisodes();
     getTimestampFromDB();
     const intervalId = setInterval(logTimestamp, 10000);
@@ -137,7 +168,7 @@ export const VidstackPlayer = ({
       <div className="w-full">
         <MediaPlayer
           ref={player}
-          title={video?.anilistID || ""}
+          title={title}
           src={video?.sources[0].url || ""}
           crossOrigin
           currentTime={startTime}
@@ -155,7 +186,7 @@ export const VidstackPlayer = ({
             ))}
           </MediaProvider>
           <DefaultVideoLayout
-            thumbnails={thumbnail ? thumbnail[0]?.file : ""}
+            // thumbnails={thumbnail ? thumbnail[0]?.file : ""}
             icons={defaultLayoutIcons}
           />
         </MediaPlayer>

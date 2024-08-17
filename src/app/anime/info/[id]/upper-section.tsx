@@ -24,8 +24,6 @@ export const UpperSection = async ({
   let animeId = info?.episodes[0]?.id.split("$")[0];
   let episodeId;
 
-  console.log(info?.studios);
-
   if (!animeId) {
     episodeId = null;
   } else {
