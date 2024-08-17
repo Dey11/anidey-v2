@@ -84,13 +84,13 @@ export const VidstackPlayer = ({
     const duration = player.current?.duration;
     if (isPaused || !episode || !duration || !currentTime || !user) return;
     if (duration - currentTime < 180) {
-      completedEpisode();
+      completedEpisode(currentTime);
       return;
     }
     storeTimeInDB(currentTime, duration);
   };
 
-  const completedEpisode = async () => {
+  const completedEpisode = async (currentTime: number) => {
     if (!episode || !user) return;
     try {
       const res = await fetch("/api/completed-episode", {
@@ -101,6 +101,7 @@ export const VidstackPlayer = ({
         body: JSON.stringify({
           userId: user,
           episodeId: episode,
+          currentTime: currentTime,
         }),
       });
       const data = await res.json();

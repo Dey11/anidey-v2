@@ -1,4 +1,4 @@
-import getWatchingList from "@/actions/getWatchingList";
+import { getContinueWatchingList } from "@/actions/getWatchingList";
 import {
   Carousel,
   CarouselContent,
@@ -32,7 +32,7 @@ const poppinsBig = Poppins({ weight: "600", subsets: ["latin"] });
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 
 const ContinueWatching = async () => {
-  const watchingList = await getWatchingList();
+  const watchingList = await getContinueWatchingList();
   if (!watchingList?.length || watchingList == null) return <div></div>;
 
   return (

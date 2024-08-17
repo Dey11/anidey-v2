@@ -16,12 +16,14 @@ import { Separator } from "@/components/ui/separator";
 import {
   AlignJustify,
   Clapperboard,
+  Heart,
   History,
   Home,
   Library,
   ListVideo,
   Search,
   Settings,
+  TvMinimalPlay,
   User,
   UsersRound,
 } from "lucide-react";
@@ -132,6 +134,20 @@ const navElements = [
     link: "/anime/continue-watching",
     description: "Resume watching right from where you left",
     icon: <History size={20} />,
+    protected: true,
+  },
+  {
+    name: "Favorites",
+    link: "/anime/favourites",
+    description: "Animes you love",
+    icon: <Heart size={20} />,
+    protected: true,
+  },
+  {
+    name: "History",
+    link: "/anime/history",
+    description: "Animes you have watched on Anidey",
+    icon: <TvMinimalPlay size={20} />,
     protected: true,
   },
   // {

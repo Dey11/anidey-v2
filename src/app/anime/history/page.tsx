@@ -1,7 +1,7 @@
 import { Poppins, Press_Start_2P } from "next/font/google";
 import Link from "next/link";
-import { CalendarRange, History, Info, Library } from "lucide-react";
-import { getContinueWatchingList } from "@/actions/getWatchingList";
+import { CalendarRange, Info, Library, TvMinimalPlay } from "lucide-react";
+import { getHistoryList } from "@/actions/getWatchingList";
 import Image from "next/image";
 import { auth } from "@/auth";
 import { SignIn } from "@/components/custom-ui/sign-in-btn";
@@ -20,7 +20,7 @@ const page = async () => {
         <SignIn />
       </div>
     );
-  const watchingList = await getContinueWatchingList();
+  const watchingList = await getHistoryList();
   if (!watchingList?.length || watchingList == null)
     return (
       <div className="mx-auto flex h-dvh max-w-[1440px] items-center justify-center gap-x-5 text-2xl">
@@ -33,8 +33,8 @@ const page = async () => {
       <div
         className={`${pressStart2P.className} flex items-center justify-center gap-x-2 px-2 pb-5 text-sm text-[#E11D48] md:text-lg lg:justify-start xl:text-xl`}
       >
-        <History size={28} className="pb-[1px]" />
-        Continue Watching
+        <TvMinimalPlay size={28} className="pb-[1px]" />
+        Watch History
       </div>
       <div className="grid grid-cols-3 place-items-center sm:grid-cols-4 xl:grid-cols-6">
         {watchingList.map((anime) => (

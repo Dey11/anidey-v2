@@ -53,6 +53,10 @@ export default function Home() {
         <h1 className={`hidden text-xl lg:block ${dotgotchic16.className}`}>
           Explore, Play and Connect
         </h1>
+        <h2 className="pt-5 text-red-500">
+          Please note that Anidey is currently in beta and is in active
+          development. Any reports of bugs/feedback is highly appreciated.
+        </h2>
 
         <div className="pt-5 lg:pt-10">
           <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>

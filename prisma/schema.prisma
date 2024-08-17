@@ -24,6 +24,7 @@ model User {
   sessions      Session[]
   animes        WatchingList[]
   history       History[]
+  favourites    Favourite[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -92,6 +93,19 @@ model History {
   duration   Int     @default(0)
   userId     String
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Favourite {
+  id            String @id @default(cuid())
+  anilistId     Int    @unique
+  animeTitle    String
+  image         String
+  totalEpisodes Int    @default(0)
+  userId        String
+  user          User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

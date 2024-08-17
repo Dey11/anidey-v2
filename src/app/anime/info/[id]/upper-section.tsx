@@ -9,6 +9,7 @@ import { Flower, Leaf, Play, Sun } from "lucide-react";
 import { Inter, Montserrat, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import FavBtn from "./add-to-fav";
 
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
@@ -46,9 +47,19 @@ export const UpperSection = async ({
 
       <div className="w-full">
         <h1
-          className={`pt-5 text-center text-2xl font-extrabold sm:pt-0 sm:text-left ${montserrat.className}`}
+          className={`pt-5 text-center text-2xl font-extrabold sm:pt-0 sm:text-left ${montserrat.className} flex items-center gap-x-1`}
         >
           {info?.title?.english ? info?.title?.english : info?.title?.romaji}
+          <FavBtn
+            anilistId={info?.id!}
+            animeTitle={
+              info?.title?.english
+                ? info?.title?.english!
+                : info?.title?.romaji!
+            }
+            image={info?.image || ""}
+            totalEpisodes={info?.totalEpisodes! || 0}
+          />
         </h1>
 
         <div className="pt-6">
@@ -130,7 +141,7 @@ export const UpperSection = async ({
               asChild
             >
               <Link
-                href={`/anime/watch/${animeId}/${anilistId}/${episodeId.episodes[0].episodeId}`}
+                href={`/anime/watch/${animeId}/${anilistId}/${episodeId.episodes[0]?.episodeId}`}
               >
                 <Play size={15} />
                 <span className={`${pressStart2P.className} text-sm`}>

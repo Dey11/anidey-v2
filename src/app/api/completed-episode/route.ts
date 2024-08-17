@@ -50,6 +50,7 @@ export async function POST(request: NextRequest) {
       },
       data: {
         isComplete: true,
+        timestamp: parseInt(body.currentTime),
       },
     });
 
