@@ -16,9 +16,9 @@ const WideCardSection = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-5 text-xl font-bold text-[#E11D48] ${pressStart2P.className}`}
+        className={`pb-7 text-xl font-bold text-[#E11D48] ${pressStart2P.className}`}
       >
-        Top Picks This Month
+        All time classics
       </h1>
       {popularAnimeList.map((anime) => (
         <WideCard anime={anime} key={anime.id} />
