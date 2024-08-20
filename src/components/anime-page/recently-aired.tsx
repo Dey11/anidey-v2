@@ -22,7 +22,7 @@ const RecentlyAired = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-5 text-xl font-bold text-[#E11D48] ${pressStart2P.className}`}
+        className={`pb-5 font-bold text-[#E11D48] md:text-xl ${pressStart2P.className}`}
       >
         Recently Aired Episodes
       </h1>

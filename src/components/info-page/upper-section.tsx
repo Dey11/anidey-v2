@@ -47,7 +47,7 @@ export const UpperSection = async ({
 
       <div className="w-full">
         <h1
-          className={`pt-5 text-center text-2xl font-extrabold sm:pt-0 sm:text-left ${montserrat.className} flex items-center gap-x-1`}
+          className={`pt-5 text-center text-xl font-extrabold sm:pt-0 sm:text-left md:text-2xl ${montserrat.className} flex items-center gap-x-1`}
         >
           {info?.title?.english ? info?.title?.english : info?.title?.romaji}
           <FavBtn
@@ -74,7 +74,7 @@ export const UpperSection = async ({
         </div>
 
         <div
-          className={`flex w-full flex-row justify-between pt-5 text-sm font-light uppercase sm:justify-normal sm:gap-x-40 ${inter.className}`}
+          className={`flex w-full flex-row justify-between pt-5 text-xs font-light uppercase sm:justify-normal sm:gap-x-40 ${inter.className}`}
         >
           <div className="flex flex-col gap-y-3">
             <p>
@@ -111,14 +111,10 @@ export const UpperSection = async ({
             {info?.season && (
               <p className="flex items-center gap-x-1">
                 Season: {info?.season}
-                <span>
-                  {(info?.season.toLowerCase() == "fall" ||
-                    info?.season.toLowerCase() == "autumn") && <Leaf />}
-                </span>
-                <span>{info?.season.toLowerCase() == "summer" && <Sun />}</span>
-                <span>
-                  {info?.season.toLowerCase() == "spring" && <Flower />}
-                </span>
+                {(info?.season.toLowerCase() == "fall" ||
+                  info?.season.toLowerCase() == "autumn") && <Leaf />}
+                {info?.season.toLowerCase() == "summer" && <Sun />}
+                {info?.season.toLowerCase() == "spring" && <Flower />}
               </p>
             )}
           </div>

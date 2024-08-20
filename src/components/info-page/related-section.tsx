@@ -13,7 +13,7 @@ export const RelatedToAnime = async ({ info }: { info: AnimeInfo | null }) => {
   return (
     <div className="pt-12">
       <h1
-        className={`text-center text-xl font-bold text-[#E11D48] sm:text-left ${pressStart2P.className}`}
+        className={`text-center font-bold text-[#E11D48] sm:text-left md:text-xl ${pressStart2P.className}`}
       >
         Related to{" "}
         <span className={clsx(color)}>
