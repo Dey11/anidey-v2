@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  AniwatchEpisodeList,
+  StreamEpisodeList,
   getEpisodeList,
 } from "../anilistApi/getStreamingLink";
 
@@ -9,7 +9,7 @@ export default function useFetchEpisodeList(
   animeId: string,
   searchParams: URLSearchParams,
 ) {
-  const [episodes, setEpisodes] = useState<AniwatchEpisodeList>();
+  const [episodes, setEpisodes] = useState<StreamEpisodeList>();
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [error, setError] = useState<boolean>(false);
 

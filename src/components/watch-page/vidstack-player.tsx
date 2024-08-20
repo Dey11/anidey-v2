@@ -7,7 +7,7 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
-import { AniwatchEpisodeLink } from "@/lib/anilistApi/getStreamingLink";
+import { StreamEpisodeLink } from "@/lib/anilistApi/getStreamingLink";
 import useHandleTimestamps from "@/lib/hooks/useHandleTimestamps";
 
 export const VidstackPlayer = ({
@@ -20,7 +20,7 @@ export const VidstackPlayer = ({
   coverImg: string;
   animeId: string;
   episode: string;
-  video: AniwatchEpisodeLink | null;
+  video: StreamEpisodeLink | null;
   user: string | undefined;
 }) => {
   // @ts-ignore

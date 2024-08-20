@@ -1,7 +1,7 @@
 "use client";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { AniwatchEpisodeList } from "@/lib/anilistApi/getStreamingLink";
+import { StreamEpisodeList } from "@/lib/anilistApi/getStreamingLink";
 import useFetchEpisodeList from "@/lib/hooks/useFetchEpisodeList";
 import clsx from "clsx";
 import { LayoutGrid, LibraryBig } from "lucide-react";
@@ -68,7 +68,7 @@ const ListView = ({
   zoroId,
   anilistId,
 }: {
-  episodes: AniwatchEpisodeList | undefined;
+  episodes: StreamEpisodeList | undefined;
   episodeIdOfAnime: string;
   zoroId: string;
   anilistId: string;
@@ -112,7 +112,7 @@ const GridView = ({
   zoroId,
   anilistId,
 }: {
-  episodes: AniwatchEpisodeList | undefined;
+  episodes: StreamEpisodeList | undefined;
   episodeIdOfAnime: string;
   zoroId: string;
   anilistId: string;

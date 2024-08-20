@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  AniwatchEpisodeLink,
+  StreamEpisodeLink,
   getStreamingLinks,
 } from "../anilistApi/getStreamingLink";
 
@@ -9,7 +9,7 @@ export default function useFetchStreamingLinks(
   searchParams: URLSearchParams,
 ) {
   const [streamingLinks, setStreamingLinks] =
-    useState<AniwatchEpisodeLink | null>(null);
+    useState<StreamEpisodeLink | null>(null);
 
   const getLinks = async () => {
     try {
