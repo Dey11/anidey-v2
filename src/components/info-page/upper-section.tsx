@@ -9,6 +9,7 @@ import { Inter, Montserrat, Press_Start_2P } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import FavBtn from "./add-to-fav";
+import { descriptionFormatter } from "@/lib/utils";
 
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] });
@@ -124,12 +125,18 @@ export const UpperSection = async ({
         </div>
 
         <div className="pt-5 text-sm font-light">
-          <ScrollArea className={`sm:h-20 md:h-24 ${inter.className}`}>
-            <p className="leading-6 tracking-wider">
-              <span className="uppercase">Description:</span>{" "}
-              <span>{info?.description as string}</span>
-            </p>
-          </ScrollArea>
+          {info?.description && (
+            <ScrollArea className={`sm:h-20 md:h-24 ${inter.className}`}>
+              <p className="leading-6 tracking-wider">
+                <span className="uppercase">Description:</span>{" "}
+                <span>
+                  {descriptionFormatter(
+                    info?.description ? info?.description : "",
+                  )}
+                </span>
+              </p>
+            </ScrollArea>
+          )}
         </div>
 
         <div className="">

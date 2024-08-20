@@ -1,7 +1,7 @@
 import { fetchPopularAnime } from "@/lib/anilistApi/getLists";
 import { PopularAnime } from "@/types/anilist";
 import Image from "next/image";
-import { Badge } from "../../components/ui/badge";
+import { Badge } from "../ui/badge";
 import { CalendarRange, Clock, Star } from "lucide-react";
 import Link from "next/link";
 import { Press_Start_2P } from "next/font/google";

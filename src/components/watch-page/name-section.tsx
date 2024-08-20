@@ -1,8 +1,8 @@
-import ReportDialog from "@/components/report-bug";
+import ReportDialog from "@/components/misc/report-bug";
 import { AnimeInfo } from "@/types/anilist";
 import { Bell } from "lucide-react";
 import InfoPageBtn from "./info-page-btn";
-import ShareBtn from "@/components/share-btn";
+import ShareBtn from "../misc/share-btn";
 
 const NameSection = ({ animeInfo }: { animeInfo: AnimeInfo }) => {
   let nextEpisode;

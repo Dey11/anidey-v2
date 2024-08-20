@@ -1,10 +1,10 @@
 import React from "react";
-import VideoPlayer from "./video-player";
-import EpisodesList from "./episodes-list";
+import VideoPlayer from "@/components/watch-page/video-player";
+import EpisodesList from "@/components/watch-page/episodes-list";
 import { getAnimeInfo } from "@/lib/anilistApi/getAnimeInfo";
-import NameSection from "./name-section";
-import { Recommendations } from "@/app/anime/info/[id]/recommendations";
-import WideGenreCardSection from "@/app/anime/info/[id]/wide-genre-cards";
+import NameSection from "@/components/watch-page/name-section";
+import { Recommendations } from "@/components/info-page/recommendations";
+import WideGenreCardSection from "@/components/info-page/wide-genre-cards";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { auth } from "@/auth";

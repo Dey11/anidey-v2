@@ -1,5 +1,5 @@
 import { fetchTrendingAnime } from "@/lib/anilistApi/getLists";
-import SingleCarouselRow from "@/components/carousel-row";
+import SingleCarouselRow from "@/components/misc/carousel-row";
 import { Press_Start_2P } from "next/font/google";
 
 const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });

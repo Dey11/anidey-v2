@@ -3,7 +3,6 @@ import {
   AniwatchEpisodeList,
   getEpisodeList,
 } from "../anilistApi/getStreamingLink";
-import { useSearchParams } from "next/navigation";
 
 export default function useFetchEpisodeList(
   zoroId: string,

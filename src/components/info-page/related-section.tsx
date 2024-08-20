@@ -1,4 +1,4 @@
-import SingleCarouselRow from "@/components/carousel-row";
+import SingleCarouselRow from "@/components/misc/carousel-row";
 import { AnimeInfo } from "@/types/anilist";
 import clsx from "clsx";
 import { Press_Start_2P } from "next/font/google";

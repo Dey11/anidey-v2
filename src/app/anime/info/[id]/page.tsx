@@ -1,9 +1,9 @@
 import { getAnimeInfo } from "@/lib/anilistApi/getAnimeInfo";
-import { UpperSection } from "./upper-section";
-import { CharSection } from "./characters-section";
-import { RelatedToAnime } from "./related-section";
-import { Recommendations } from "./recommendations";
-import WideGenreCardSection from "./wide-genre-cards";
+import { UpperSection } from "@/components/info-page/upper-section";
+import { CharSection } from "@/components/info-page/characters-section";
+import { RelatedToAnime } from "@/components/info-page/related-section";
+import { Recommendations } from "@/components/info-page/recommendations";
+import WideGenreCardSection from "@/components/info-page/wide-genre-cards";
 import { AnimeGenres } from "@/types/anilist";
 import { Metadata } from "next";
 import { Poppins } from "next/font/google";
