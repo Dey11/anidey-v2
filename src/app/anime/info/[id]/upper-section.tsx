@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getEpisodeList } from "@/lib/anilistApi/getStreamingLink";
-import { descriptionFormatter } from "@/lib/utils";
 import { AnimeInfo } from "@/types/anilist";
 import clsx from "clsx";
 import { Flower, Leaf, Play, Sun } from "lucide-react";
@@ -128,7 +127,7 @@ export const UpperSection = async ({
           <ScrollArea className={`sm:h-20 md:h-24 ${inter.className}`}>
             <p className="leading-6 tracking-wider">
               <span className="uppercase">Description:</span>{" "}
-              <span>{descriptionFormatter(info?.description as string)}</span>
+              <span>{info?.description as string}</span>
             </p>
           </ScrollArea>
         </div>

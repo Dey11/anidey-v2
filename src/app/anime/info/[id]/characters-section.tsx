@@ -43,33 +43,37 @@ const VoiceActorDiv = ({
   vaName: string;
   characterImage: string;
 }) => {
-  if (!characterImage || !vaImage || !characterName || !vaName)
-    return <div className="text-xl text-[#E11D48]"></div>;
+  // if (!characterImage || !characterName)
+  //   return <div className="text-xl text-[#E11D48]"></div>;
 
   return (
     <div className="relative h-96 w-32 rounded-[50px] bg-rose-600 text-center font-semibold text-black sm:w-36">
-      <div className="w-full p-2">
-        <Image
-          className="mx-auto rounded-2xl pt-2"
-          src={characterImage}
-          alt={characterName}
-          width={60}
-          height={60}
-        />
-        <p className="text-wrap pt-2">{characterName.split(" ")[0]}</p>
-        <p className="text-wrap">{characterName.split(" ")[1]}</p>
-      </div>
-      <div className="absolute top-1/2 mx-auto w-full p-2">
-        <Image
-          className="mx-auto rounded-2xl"
-          src={vaImage}
-          alt={vaName[0]}
-          width={60}
-          height={60}
-        />
-        <p className="text-wrap pt-2">{vaName.split(" ")[0]}</p>
-        <p className="text-wrap">{vaName.split(" ")[1]}</p>
-      </div>
+      {characterImage && characterName && (
+        <div className="w-full p-2">
+          <Image
+            className="mx-auto rounded-2xl pt-2"
+            src={characterImage}
+            alt={characterName}
+            width={60}
+            height={60}
+          />
+          <p className="text-wrap pt-2">{characterName.split(" ")[0]}</p>
+          <p className="text-wrap">{characterName.split(" ")[1]}</p>
+        </div>
+      )}
+      {vaName && vaImage && (
+        <div className="absolute top-1/2 mx-auto w-full p-2">
+          <Image
+            className="mx-auto rounded-2xl"
+            src={vaImage}
+            alt={vaName[0]}
+            width={60}
+            height={60}
+          />
+          <p className="text-wrap pt-2">{vaName.split(" ")[0]}</p>
+          <p className="text-wrap">{vaName.split(" ")[1]}</p>
+        </div>
+      )}
     </div>
   );
 };

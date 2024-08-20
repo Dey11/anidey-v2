@@ -14,13 +14,13 @@ const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 export async function generateMetadata({
   params,
 }: {
-  params: { episodeId: string; animeId: string };
+  params: { episodeId: string; animeId: string; anilistId: string };
 }): Promise<Metadata> {
-  const response = await getAnimeInfo(params.animeId);
+  const response = await getAnimeInfo(params.anilistId);
   const title = response?.title?.english
     ? response?.title?.english
     : response?.title?.romaji;
-  const description = `Stream ${title} episode ${params.episodeId} for free, without ads.`;
+  const description = `Stream ${title} episodes for free, without ads.`;
   const img = response?.cover;
   return {
     title,
