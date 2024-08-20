@@ -50,9 +50,7 @@ export const VidstackPlayer = ({
   const thumbnail = video?.tracks?.filter((track) => {
     return track.kind === "thumbnails";
   });
-  const defaultSubtitle = video?.tracks?.filter((track) => {
-    return track.kind === "captions" && track.label === "English";
-  });
+
   const captions = video?.tracks?.filter((track) => {
     return track.kind === "captions";
   });
