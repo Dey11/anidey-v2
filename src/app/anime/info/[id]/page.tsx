@@ -32,8 +32,9 @@ export async function generateMetadata({
 
 const page = async ({ params }: { params: { id: string } }) => {
   const info = await getAnimeInfo(params.id);
+  // console.log(info);
   // @ts-ignore
-  if (info.message) {
+  if (info?.message || !info) {
     console.log("Not Found");
     return (
       <div className="h-dvh pt-24 text-center md:text-3xl">Anime Not Found</div>

@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "media.kitsu.io",
       },
+      {
+        protocol: "https",
+        hostname: "media.kitsu.app",
+      },
     ],
   },
   crossOrigin: "anonymous",
