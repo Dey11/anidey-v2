@@ -1,38 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+----
 
-Developed by Dey and designs made by [Krish](https://github.com/Krish-Gupta07).
+# Anidey
 
-## Getting Started
+**Description**:  Just another free anime watching website, powered by Anilist and Aniwatch.
 
-First, run the development server:
+
+**Screenshot**: If the software has visual components, place a screenshot after the description; e.g.,
+
+![image](https://github.com/user-attachments/assets/e1617910-f914-4d37-a5ea-85c293a3a2c5)
+
+
+
+## Installation
+
+Install the dependencies
+
+```bash
+npm i
+```
+
+Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Known issues
 
-## Learn More
+Document any known significant shortcomings with the software.
 
-To learn more about Next.js, take a look at the following resources:
+## Getting help
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For queries, feel free to text me on discord (sdey.)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Getting involved
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you want to contribute to the project, feel free to do so. Raise an issue and work on it only after you're assigned.
+Currently focussing on making a profile page and accomodating different servers in the watch page.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is in active development. Kindly raise an issue for any bug you face.
+
+
+----
+
+## Open source licensing info
+GNU General Public License v3.0
+
+
+----
+
+## Credits and references
+
+Developed by Dey and designs made by [Krish](https://github.com/Krish-Gupta07).
