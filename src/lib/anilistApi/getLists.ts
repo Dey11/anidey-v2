@@ -7,7 +7,7 @@ export const fetchTrendingAnime = async (
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}trending?page=${page}&perPage=${perPage}`;
   try {
     const fetchData = await fetch(url, {
-      next: { revalidate: 86400 },
+      next: { revalidate: 3600 },
     });
     const response = await fetchData.json();
     return response.results;
