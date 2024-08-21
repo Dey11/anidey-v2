@@ -17,6 +17,12 @@ export async function generateMetadata({
   params: { id: string };
 }): Promise<Metadata> {
   const response = await getAnimeInfo(params.id);
+  if (response?.isAdult) {
+    return {
+      title: "Adult Content",
+      description: "We do not support adult content",
+    };
+  }
   const description = response?.description;
   const title =
     response?.title?.english || response?.title?.romaji || "Not Found";
@@ -34,8 +40,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   const info = await getAnimeInfo(params.id);
   // console.log(info);
   // @ts-ignore
-  if (info?.message || !info) {
-    console.log("Not Found");
+  if (info?.message || !info || info?.isAdult) {
     return (
       <div className="h-dvh pt-24 text-center md:text-3xl">Anime Not Found</div>
     );

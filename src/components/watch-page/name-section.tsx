@@ -6,8 +6,8 @@ import ShareBtn from "../misc/share-btn";
 
 const NameSection = ({ animeInfo }: { animeInfo: AnimeInfo }) => {
   let nextEpisode;
-  if (animeInfo.status == "Ongoing") {
-    if (animeInfo.nextAiringEpisode?.airingTime) {
+  if (animeInfo?.status == "Ongoing") {
+    if (animeInfo?.nextAiringEpisode?.airingTime) {
       var timestamp = animeInfo.nextAiringEpisode!.airingTime!.valueOf() * 1000;
       var todate = new Date(timestamp).getDate();
       var tomonth = new Date(timestamp).getMonth() + 1;

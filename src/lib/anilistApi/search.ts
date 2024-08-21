@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { AnimeGenres, SearchResult } from "@/types/anilist";
 
 export const search = async (
@@ -81,6 +83,14 @@ export const genreSearch = async (
   perPage = 5,
   type = "ANIME",
 ): Promise<SearchResult[] | null> => {
+  if (
+    genre === "Ecchi" ||
+    genre === "Hentai" ||
+    genre === "Yaoi" ||
+    genre === "Yuri"
+  ) {
+    return null;
+  }
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}advanced-search?&page=${page}&perPage=${perPage}&genres=["${genre}"]&type=${type}`;
   try {
     const fetchData = await fetch(url, {

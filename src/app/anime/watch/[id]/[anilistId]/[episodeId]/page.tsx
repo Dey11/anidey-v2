@@ -46,7 +46,7 @@ const page = async ({
   const coverImg = animeInfo?.image;
   const session = await auth();
   const user = session?.user?.id;
-
+  // console.log(animeInfo);
   // @ts-ignore
   if (animeInfo?.message) {
     return (
