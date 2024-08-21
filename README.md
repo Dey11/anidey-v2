@@ -2,10 +2,9 @@
 
 # Anidey
 
-**Description**:  Just another free anime watching website, powered by Anilist and Aniwatch.
+Just another free anime watching website, powered by Anilist and Aniwatch.
 
 
-**Screenshot**: If the software has visual components, place a screenshot after the description; e.g.,
 
 ![image](https://github.com/user-attachments/assets/e1617910-f914-4d37-a5ea-85c293a3a2c5)
 
