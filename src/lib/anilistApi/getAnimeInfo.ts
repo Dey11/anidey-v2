@@ -8,7 +8,7 @@ export const getAnimeInfo = async (
 
   try {
     const fetchData = await fetch(url, {
-      next: { revalidate: 86400 },
+      next: { revalidate: 3600 },
     });
     const response = await fetchData.json();
     return response;
