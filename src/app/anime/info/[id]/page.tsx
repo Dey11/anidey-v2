@@ -40,9 +40,19 @@ const page = async ({ params }: { params: { id: string } }) => {
   const info = await getAnimeInfo(params.id);
   // console.log(info);
   // @ts-ignore
-  if (info?.message || !info || info?.isAdult) {
+  if (info?.message || !info) {
     return (
-      <div className="h-dvh pt-24 text-center md:text-3xl">Anime Not Found</div>
+      <div className="h-dvh pt-24 text-center md:text-3xl">
+        Anime Not Found.
+      </div>
+    );
+  }
+
+  if (info?.isAdult) {
+    return (
+      <div className="h-dvh pt-24 text-center md:text-3xl">
+        Adult Content is not available on our site.
+      </div>
     );
   }
 

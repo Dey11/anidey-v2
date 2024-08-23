@@ -16,7 +16,7 @@ const WideCardSection = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-7 font-bold text-[#E11D48] md:text-xl ${pressStart2P.className}`}
+        className={`pb-2 text-center font-bold text-[#E11D48] md:text-left md:text-xl lg:pb-7 ${pressStart2P.className}`}
       >
         All time classics
       </h1>

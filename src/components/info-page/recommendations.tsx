@@ -32,10 +32,10 @@ export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
           </span>
         </h1>
       )}
-      <div className="overflow-x-hidden overflow-y-hidden pt-6">
+      <div className="overflow-x-hidden overflow-y-hidden">
         <RecommendationsCarouselRow list={info?.recommendations.slice(0, 4)!} />
         <RecommendationsCarouselRow
-          list={info?.recommendations.slice(5, secondCarousel + 1)!}
+          list={info?.recommendations.slice(5, secondCarousel)!}
         />
       </div>
     </div>
@@ -52,7 +52,10 @@ const RecommendationsCarouselRow = ({ list }: { list: Recommendation[] }) => {
     >
       <CarouselContent className="">
         {list.map((anime) => (
-          <CarouselItem className="basis-1/3 sm:basis-1/4" key={anime.id}>
+          <CarouselItem
+            className="basis-1/3 pt-3 sm:basis-1/4 lg:ml-[-10px] lg:pl-10 lg:pt-6"
+            key={anime.id}
+          >
             <Link href={`/anime/info/${anime.id}`}>
               <div className="max-h-fit max-w-fit" key={anime.id}>
                 <AnimeCard anime={anime} />

@@ -22,7 +22,7 @@ const RecentlyAired = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-5 font-bold text-[#E11D48] md:text-xl ${pressStart2P.className}`}
+        className={`pb-2 text-center font-bold text-[#E11D48] md:text-left md:text-xl lg:pb-5 lg:pl-3 ${pressStart2P.className}`}
       >
         Recently Aired Episodes
       </h1>
@@ -45,7 +45,10 @@ const RecentEpsCarouselRow = ({ list }: { list: RecentEpisodes[] }) => {
     >
       <CarouselContent className="">
         {list.map((anime) => (
-          <CarouselItem className="basis-1/3 sm:basis-1/4" key={anime.id}>
+          <CarouselItem
+            className="basis-1/3 sm:basis-1/4 lg:ml-[-10px] lg:pl-10"
+            key={anime.id}
+          >
             <Link href={`/anime/info/${anime.id}`}>
               <div
                 className="max-h-fit max-w-fit rounded-md pt-2"

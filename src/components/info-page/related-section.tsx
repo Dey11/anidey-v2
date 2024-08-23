@@ -21,7 +21,7 @@ export const RelatedToAnime = async ({ info }: { info: AnimeInfo | null }) => {
         </span>
       </h1>
 
-      <div className="overflow-x-hidden pt-6">
+      <div className="overflow-x-hidden pt-3 lg:pt-6">
         <SingleCarouselRow list={info?.relations!} />
       </div>
     </div>

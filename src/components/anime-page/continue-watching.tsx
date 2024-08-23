@@ -38,7 +38,7 @@ const ContinueWatching = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-5 text-base font-bold text-[#E11D48] md:text-xl ${pressStart2P.className}`}
+        className={`pb-2 text-center text-base font-bold text-[#E11D48] md:text-left md:text-xl lg:pb-5 lg:pl-3 ${pressStart2P.className}`}
       >
         Continue Watching
       </h1>
@@ -65,7 +65,7 @@ const ContinueWatchingRow = ({
       <CarouselContent className="mb-8">
         {watchingList.map((anime) => (
           <CarouselItem
-            className="basis-1/3 sm:basis-1/4 xl:basis-1/6"
+            className="basis-1/3 sm:basis-1/4 lg:ml-[-10px] lg:pl-10 xl:basis-1/6"
             key={anime.id}
           >
             <Link

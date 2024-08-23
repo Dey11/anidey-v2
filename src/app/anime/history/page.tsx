@@ -31,7 +31,7 @@ const page = async () => {
   return (
     <div className="mx-auto min-h-dvh max-w-[1440px] px-1 pt-20">
       <div
-        className={`${pressStart2P.className} flex items-center justify-center gap-x-2 px-2 pb-5 text-sm text-[#E11D48] md:text-lg lg:justify-start xl:text-xl`}
+        className={`${pressStart2P.className} flex items-center justify-center gap-x-2 px-2 pb-2 text-sm text-[#E11D48] md:text-lg lg:justify-start lg:pb-5 xl:text-xl`}
       >
         <TvMinimalPlay size={28} className="pb-[1px]" />
         Watch History

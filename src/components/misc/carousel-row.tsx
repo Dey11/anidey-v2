@@ -37,7 +37,7 @@ const SingleCarouselRow = ({
       <CarouselContent className="mb-8">
         {list.map((anime) => (
           <CarouselItem
-            className="basis-1/3 sm:basis-1/4 xl:basis-1/6"
+            className="basis-1/3 sm:basis-1/4 lg:ml-[-10px] lg:pl-10 xl:basis-1/6"
             key={anime.id}
           >
             <Link href={`/anime/info/${anime.id}`}>

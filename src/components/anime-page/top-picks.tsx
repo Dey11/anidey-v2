@@ -11,7 +11,7 @@ const TopPicks = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-5 font-bold text-[#E11D48] md:text-xl ${pressStart2P.className}`}
+        className={`pb-2 text-center font-bold text-[#E11D48] md:text-left md:text-xl lg:pb-5 lg:pl-3 ${pressStart2P.className}`}
       >
         Top Picks This Month
       </h1>
