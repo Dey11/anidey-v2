@@ -3,7 +3,7 @@ export const KOFI_URL = "https://ko-fi.com/anidey";
 
 export const BANNERS = [
   {
-    url: "/CSM.png",
+    url: "/makima_1080p.png",
     name: "Chainsaw Man",
     alt: "Chainsaw Man",
     title: "Chainsaw Man",
@@ -15,7 +15,7 @@ export const BANNERS = [
     link: `watch/chainsaw-man-17406/127230/chainsaw-man-17406?ep=94597`,
   },
   {
-    url: "/JJK_1.png",
+    url: "/jjk_1080p.png",
     name: "Jujustu Kaisen",
     alt: "Jujustu Kaisen",
     title: "Jujustu Kaisen",
@@ -27,7 +27,7 @@ export const BANNERS = [
     link: `watch/jujutsu-kaisen-tv-534/113415/jujutsu-kaisen-tv-534?ep=10789`,
   },
   {
-    url: "/OP.png",
+    url: "/op_1080p.png",
     name: "One Piece",
     alt: "One Piece",
     title: "One Piece",
@@ -39,7 +39,7 @@ export const BANNERS = [
     link: `watch/one-piece-100/21/one-piece-100?ep=2142`,
   },
   {
-    url: "/YLIA.png",
+    url: "/ylia_1080p.png",
     name: "Your Lie in April",
     alt: "Your Lie in April",
     title: "Your Lie in April",
@@ -51,7 +51,7 @@ export const BANNERS = [
     link: `watch/shigatsu-wa-kimi-no-uso-moments-946/20665/shigatsu-wa-kimi-no-uso-moments-946?ep=94660`,
   },
   {
-    url: "/SAEKANO.png",
+    url: "/saekano_1080p.png",
     name: "Saekano",
     alt: "Saekano",
     title: "Saekano: How to Raise a Boring Girlfriend",

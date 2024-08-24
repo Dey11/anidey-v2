@@ -24,15 +24,9 @@ const page = () => {
         {/* <TopCarousel /> */}
       </Suspense>
       <div className="mx-auto max-w-[1440px]">
-        <Suspense>
-          <ContinueWatching />
-        </Suspense>
-        <Suspense>
-          <Favourites />
-        </Suspense>
-        <Suspense>
-          <TopPicks />
-        </Suspense>
+        <ContinueWatching />
+        <Favourites />
+        <TopPicks />
         <div className="xl:grid xl:grid-cols-6">
           <div className="col-span-4">
             <Suspense fallback={<div>Loading...</div>}>

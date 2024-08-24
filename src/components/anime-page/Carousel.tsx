@@ -39,7 +39,7 @@ const slideStyles = {
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  // transition: "all 0.1s",
+  transition: "all 0.1s",
   zIndex: 1,
   backgroundImage: `url(${BANNERS[0].url})`,
 };
@@ -61,15 +61,21 @@ const Carousel = () => {
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? BANNERS.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+    }, 100);
   };
   const goToNext = () => {
     const isLastSlide = currentIndex === BANNERS.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+    }, 100);
   };
   const goToSlide = (slideIndex: number) => {
-    setCurrentIndex(slideIndex);
+    setTimeout(() => {
+      setCurrentIndex(slideIndex);
+    }, 100);
   };
   const slideStylesWidthBackground = {
     ...slideStyles,
@@ -104,6 +110,9 @@ const Carousel = () => {
             style={dotStyle}
             key={slideIndex}
             onClick={() => goToSlide(slideIndex)}
+            className={clsx(
+              currentIndex === slideIndex ? "text-blue-500" : "text-white",
+            )}
           >
             ●
           </div>
@@ -184,7 +193,7 @@ const Carousel = () => {
             >
               <Link
                 href={`/anime/${BANNERS[currentIndex].link}`}
-                className={`${pressStart2P.className} text-sm`}
+                className={`${pressStart2P.className}`}
               >
                 <Play size={24} className="pr-1" />
                 Play
