@@ -1,11 +1,12 @@
 import { Metadata } from "next";
-import RecentlyAired from "../../components/anime-page/recently-aired";
-import TopCarousel from "../../components/anime-page/top-carousel";
-import TopPicks from "../../components/anime-page/top-picks";
+import RecentlyAired from "@/components/anime-page/recently-aired";
+// import TopCarousel from "../../components/anime-page/top-carousel";
+import TopPicks from "@/components/anime-page/top-picks";
 import WideCardSection from "@/components/anime-page/wide-card";
 import { Suspense } from "react";
-import ContinueWatching from "../../components/anime-page/continue-watching";
+import ContinueWatching from "@/components/anime-page/continue-watching";
 import Favourites from "@/components/anime-page/favourites";
+import Carousel from "@/components/anime-page/Carousel";
 
 export const metadata: Metadata = {
   title: "Explore Anidey",
@@ -17,7 +18,10 @@ const page = () => {
   return (
     <div>
       <Suspense>
-        <TopCarousel />
+        <div className="h-[400px] w-full md:h-[500px] lg:h-[75vh]">
+          <Carousel />
+        </div>
+        {/* <TopCarousel /> */}
       </Suspense>
       <div className="mx-auto max-w-[1440px]">
         <Suspense>
