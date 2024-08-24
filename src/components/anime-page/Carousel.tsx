@@ -39,7 +39,7 @@ const slideStyles = {
   backgroundSize: "cover",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  transition: "all 0.3s",
+  // transition: "all 0.1s",
   zIndex: 1,
   backgroundImage: `url(${BANNERS[0].url})`,
 };
@@ -132,8 +132,8 @@ const Carousel = () => {
             <div className="flex items-center gap-x-2 pt-2 sm:pt-0">
               {BANNERS[currentIndex].date && (
                 <div className="flex items-center gap-x-1 pt-2 sm:pt-0">
-                  <CalendarRange />
-                  <p className="text-xs font-bold">
+                  <CalendarRange className="h-4 w-4 lg:h-5 lg:w-5" />
+                  <p className="text-xs font-bold lg:text-sm">
                     {BANNERS[currentIndex].date}
                   </p>
                 </div>
@@ -141,8 +141,8 @@ const Carousel = () => {
 
               {BANNERS[currentIndex].status && (
                 <div className="flex items-center gap-x-1 pt-2 text-[#E11D48] sm:pt-0">
-                  <History />
-                  <p className="text-sm font-extrabold">
+                  <History className="h-4 w-4 lg:h-5 lg:w-5" />
+                  <p className="text-xs font-extrabold lg:text-sm">
                     {BANNERS[currentIndex].status}
                   </p>
                 </div>
@@ -150,8 +150,13 @@ const Carousel = () => {
 
               {BANNERS[currentIndex].rating && (
                 <div className="flex items-center gap-x-1 pt-2 sm:pt-0">
-                  <Star size={20} />
-                  <p className={clsx("text-sm font-bold", ratingColor)}>
+                  <Star className="h-4 w-4 lg:h-5 lg:w-5" />
+                  <p
+                    className={clsx(
+                      "text-xs font-bold lg:text-sm",
+                      ratingColor,
+                    )}
+                  >
                     {BANNERS[currentIndex].rating}
                   </p>
                 </div>
@@ -174,9 +179,8 @@ const Carousel = () => {
           <div className="flex gap-x-4 pt-2">
             <Button
               asChild
-              size={"lg"}
               variant={"outline"}
-              className="border-slate-700 font-bold text-[#E11D48]"
+              className="border-slate-700 text-xs font-bold text-[#E11D48] lg:text-base"
             >
               <Link
                 href={`/anime/${BANNERS[currentIndex].link}`}
