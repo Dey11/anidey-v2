@@ -9,7 +9,9 @@ export default function useHandleTimestamps({
   episode,
   animeId,
   coverImg,
+  medium,
 }: {
+  medium: "sub" | "dub";
   coverImg: string;
   animeId: string;
   episode: string;
@@ -127,7 +129,7 @@ export default function useHandleTimestamps({
     getTimestampFromDB();
     const intervalId = setInterval(logTimestamp, 10000);
     return () => clearInterval(intervalId);
-  }, [episode, title, number, isFiller]);
+  }, [episode, title, number, isFiller, medium]);
 
   return { player, startTime, setStartTime, title };
 }

@@ -7,13 +7,14 @@ import {
 export default function useFetchStreamingLinks(
   episodeId: string,
   searchParams: URLSearchParams,
+  medium: "sub" | "dub",
 ) {
   const [streamingLinks, setStreamingLinks] =
     useState<StreamEpisodeLink | null>(null);
 
   const getLinks = async () => {
     try {
-      const links = await getStreamingLinks(episodeId);
+      const links = await getStreamingLinks(episodeId, medium);
       setStreamingLinks(links);
     } catch (err) {
       console.log(err);
@@ -22,7 +23,6 @@ export default function useFetchStreamingLinks(
 
   useEffect(() => {
     getLinks();
-  }, [searchParams.get("ep")]);
-
+  }, [searchParams.get("ep"), medium]);
   return streamingLinks;
 }

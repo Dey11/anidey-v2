@@ -1,7 +1,8 @@
 export const getStreamingLinks = async (
   zoroEpisodeId: string,
+  medium: "sub" | "dub" = "sub",
 ): Promise<StreamEpisodeLink | null> => {
-  const url = `${process.env.NEXT_PUBLIC_STREAM_URL}/episode-srcs?id=${zoroEpisodeId}`;
+  const url = `${process.env.NEXT_PUBLIC_STREAM_URL}/episode-srcs?id=${zoroEpisodeId}&category=${medium}`;
   try {
     const fetchData = await fetch(url, {
       cache: "force-cache",

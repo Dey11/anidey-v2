@@ -4,6 +4,8 @@ import { VidstackPlayer } from "./vidstack-player";
 import { useSearchParams } from "next/navigation";
 import useFetchStreamingLinks from "@/lib/hooks/useFetchStreamingLinks";
 import { KOFI_URL } from "@/lib/constants";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const VideoPlayer = ({
   user,
@@ -18,8 +20,15 @@ const VideoPlayer = ({
 }) => {
   const searchParams = useSearchParams();
   const episodeIdOfAnime = `${animeId}?ep=${searchParams.get("ep")}`;
+  // const medium = searchParams.get("dub") === "true" ? "dub" : "sub";
 
-  const streamingLinks = useFetchStreamingLinks(episodeIdOfAnime, searchParams);
+  const [medium, setMedium] = useState<"sub" | "dub">("sub");
+
+  const streamingLinks = useFetchStreamingLinks(
+    episodeIdOfAnime,
+    searchParams,
+    medium,
+  );
 
   return (
     <div className="flex w-full max-w-[1100px] flex-col">
@@ -31,6 +40,7 @@ const VideoPlayer = ({
             episode={episodeIdOfAnime}
             animeId={animeId}
             coverImg={coverImg}
+            medium={medium}
           />
         )}
       </div>
@@ -43,6 +53,32 @@ const VideoPlayer = ({
           </a>{" "}
           or by simply sharing the website. Thanks :3
         </p>
+      </div>
+      <div className="pt-2">
+        <div className="flex justify-center space-x-2">
+          <button
+            className={cn(
+              "rounded-lg bg-gray-800 px-4 py-2 text-white",
+              medium === "sub" ? "bg-rose-500" : "",
+            )}
+            onClick={() => {
+              setMedium("sub");
+            }}
+          >
+            Sub
+          </button>
+          <button
+            className={cn(
+              "rounded-lg bg-gray-800 px-4 py-2 text-white",
+              medium === "dub" ? "bg-rose-500" : "",
+            )}
+            onClick={() => {
+              setMedium("dub");
+            }}
+          >
+            Dub
+          </button>
+        </div>
       </div>
     </div>
   );

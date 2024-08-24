@@ -16,7 +16,9 @@ export const VidstackPlayer = ({
   episode,
   animeId,
   coverImg,
+  medium,
 }: {
+  medium: "sub" | "dub";
   coverImg: string;
   animeId: string;
   episode: string;
@@ -33,16 +35,17 @@ export const VidstackPlayer = ({
     );
   }
 
-  const captions = video?.tracks?.filter((track) => {
-    return track.kind === "captions";
-  });
-
   const { player, startTime, title } = useHandleTimestamps({
     video,
     user,
     episode,
     animeId,
     coverImg,
+    medium,
+  });
+
+  const captions = video?.tracks?.filter((track) => {
+    return track.kind === "captions";
   });
 
   return (
