@@ -118,7 +118,7 @@ const GridView = ({
   anilistId: string;
 }) => {
   return (
-    <ScrollArea className="mx-auto max-h-[580px] w-full max-w-[320px] p-5">
+    <ScrollArea className="mx-auto h-dvh max-h-[580px] w-full max-w-[320px] p-5">
       <div className="grid grid-cols-6 gap-2">
         {episodes?.episodes.map((episode) => (
           <Link
