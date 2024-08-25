@@ -44,6 +44,7 @@ export const Footer = () => {
         <div className="flex justify-between gap-x-4 lg:justify-normal">
           <Link href={"/privacy-policy"}>Privacy Policy</Link>
           <Link href={"/terms-of-service"}>Terms of Service</Link>
+          <Link href={"/dmca"}>DMCA</Link>
           <a href="https://ko-fi.com/anidey">
             <p className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-semibold text-transparent">
               Donate :3
