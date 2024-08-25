@@ -6,12 +6,14 @@ Just another free anime watching website, powered by Anilist and Aniwatch.
 
 
 
-![image](https://github.com/user-attachments/assets/e1617910-f914-4d37-a5ea-85c293a3a2c5)
+![Anidey](https://github.com/user-attachments/assets/c1381fee-c590-4811-b929-6309f59e8b38)
+
 
 ## Features
 1. Ad free streaming of animes.
 2. Clean UI. Further improvements are being made on a daily basis.
 3. Watch time, Favourites, Continue Watching, Watch History for logged in users.
+4. Dual servers for watching episodes.
 
 
 ## Installation
