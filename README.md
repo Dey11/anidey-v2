@@ -32,9 +32,6 @@ npm run dev
 
 
 
-## Known issues
-
-Document any known significant shortcomings with the software.
 
 ## Getting help
 
@@ -46,7 +43,7 @@ For queries, feel free to text me on discord (sdey.)
 If you want to contribute to the project, feel free to do so. Raise an issue and work on it only after you're assigned.
 Currently focussing on making a profile page and accomodating different servers in the watch page.
 
-This project is in active development. Kindly raise an issue for any bug you face.
+This project is in active development. Kindly raise an issue for any bug you face. We encourage you to contribute to this project.
 
 
 ----
