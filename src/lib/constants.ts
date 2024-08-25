@@ -63,3 +63,5 @@ export const BANNERS = [
     link: `watch/saekano-how-to-raise-a-boring-girlfriend-1415/20657/saekano-how-to-raise-a-boring-girlfriend-1415?ep=20124`,
   },
 ];
+
+export const DISCORD_URL = "https://discord.gg/rT5AQkys2v";
