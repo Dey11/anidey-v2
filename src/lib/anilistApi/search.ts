@@ -10,7 +10,7 @@ export const search = async (
 
   try {
     const fetchData = await fetch(url, {
-      cache: "force-cache",
+      revalidate: 3600,
     });
     const response = await fetchData.json();
     return response.results;
@@ -35,28 +35,33 @@ export const advancedSearchWithFilters = async (
   },
 ): Promise<SearchResult[] | null> => {
   let url = `${process.env.NEXT_PUBLIC_BACKEND_URL}advanced-search?`;
-
   if (query) {
-    url += `query=${query}`;
+    url += `query=${encodeURIComponent(query)}`;
   }
+  let check = false;
   if (filters.type) {
     url += `&type=${filters.type}`;
   }
   if (filters.season != "None" && filters.season != "") {
     url += `&season=${filters.season}`;
+    check = true;
   }
   if (filters.format != "None" && filters.format != "") {
     url += `&format=${filters.format}`;
+    check = true;
   }
   if (filters.genre.length) {
     // console.log(filters.genre);
     url += `&genres=${filters.genre}`;
+    check = true;
   }
   if (filters.year != "" && filters.year != "None") {
     url += `&year=${filters.year}`;
+    check = true;
   }
   if (filters.status != "None" && filters.status != "") {
     url += `&status=${filters.status}`;
+    check = true;
   }
   if (filters.page) {
     url += `&page=${filters.page}`;
@@ -66,8 +71,11 @@ export const advancedSearchWithFilters = async (
   }
 
   try {
+    if (!check) {
+      url = `${process.env.NEXT_PUBLIC_BACKEND_URL}${query}?page=1`;
+    }
     const fetchData = await fetch(url, {
-      cache: "force-cache",
+      cache: "no-store",
     });
     const response = await fetchData.json();
     return response.results;
@@ -94,7 +102,7 @@ export const genreSearch = async (
   const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}advanced-search?&page=${page}&perPage=${perPage}&genres=["${genre}"]&type=${type}`;
   try {
     const fetchData = await fetch(url, {
-      cache: "force-cache",
+      revalidate: 3600,
     });
     const response = await fetchData.json();
     return response.results;

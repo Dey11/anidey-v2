@@ -25,7 +25,7 @@ export const searchAtom = atom<SearchAtomType>({
       isTrue: false,
       type: "ANIME",
       page: 1,
-      perPage: 5,
+      perPage: 10,
       season: "",
       year: "",
       genre: [],
