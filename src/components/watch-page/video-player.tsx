@@ -51,7 +51,7 @@ const VideoPlayer = ({
           <a href={KOFI_URL} className="underline">
             here
           </a>{" "}
-          or by simply sharing the website. Thanks :3
+          or by simply sharing the website. Thanks!
         </p>
       </div>
       <div className="pt-2">

@@ -47,7 +47,7 @@ export const Footer = () => {
           <Link href={"/dmca"}>DMCA</Link>
           <a href="https://ko-fi.com/anidey">
             <p className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-semibold text-transparent">
-              Donate :3
+              Donate
             </p>
           </a>
         </div>
