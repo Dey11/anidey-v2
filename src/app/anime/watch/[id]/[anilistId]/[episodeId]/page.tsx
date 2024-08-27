@@ -1,4 +1,3 @@
-import React from "react";
 import VideoPlayer from "@/components/watch-page/video-player";
 import EpisodesList from "@/components/watch-page/episodes-list";
 import { getAnimeInfo } from "@/lib/anilistApi/getAnimeInfo";

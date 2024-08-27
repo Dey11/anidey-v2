@@ -4,18 +4,18 @@ import { getEpisodeList } from "../anilistApi/getStreamingLink";
 import { MediaPlayerInstance } from "@vidstack/react";
 
 export default function useHandleTimestamps({
-  video,
   user,
   episode,
   animeId,
   coverImg,
   medium,
+  anilistId,
 }: {
   medium: "sub" | "dub";
   coverImg: string;
+  anilistId: string;
   animeId: string;
   episode: string;
-  video: any;
   user: string | undefined;
 }) {
   const { toast } = useToast();
@@ -99,7 +99,7 @@ export default function useHandleTimestamps({
           isFiller: isFiller,
           timestamp: time,
           animeId: animeId,
-          anilistId: video!.anilistID,
+          anilistId: anilistId,
           image: coverImg,
           duration: duration,
         }),

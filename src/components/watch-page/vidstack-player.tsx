@@ -17,9 +17,11 @@ export const VidstackPlayer = ({
   animeId,
   coverImg,
   medium,
+  anilistId,
 }: {
   medium: "sub" | "dub";
   coverImg: string;
+  anilistId: string;
   animeId: string;
   episode: string;
   video: StreamEpisodeLink | null;
@@ -36,12 +38,12 @@ export const VidstackPlayer = ({
   }
 
   const { player, startTime, title } = useHandleTimestamps({
-    video,
     user,
     episode,
     animeId,
     coverImg,
     medium,
+    anilistId,
   });
 
   const captions = video?.tracks?.filter((track) => {
