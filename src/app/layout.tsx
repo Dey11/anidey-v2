@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/toaster";
 import RecoilContextProvider from "../lib/recoil-context-provider";
 import { Footer } from "@/components/footer/footer";
+import LoginBanner from "@/components/header/LoginBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,8 @@ export default function RootLayout({
       <SessionProvider>
         <RecoilContextProvider>
           <body className={`${inter.className} dark`}>
-            <div className="absolute top-0 z-50 w-full">
+            <LoginBanner />
+            <div className="absolute top-0 z-40 w-full">
               <Header />
             </div>
             {children}
