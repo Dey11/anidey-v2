@@ -1,9 +1,9 @@
 import SingleCarouselRow from "@/components/misc/carousel-row";
 import { AnimeInfo } from "@/types/anilist";
 import clsx from "clsx";
-import { Press_Start_2P } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 export const RelatedToAnime = async ({ info }: { info: AnimeInfo | null }) => {
   const color = "text-[#E11D48]";
@@ -13,7 +13,7 @@ export const RelatedToAnime = async ({ info }: { info: AnimeInfo | null }) => {
   return (
     <div className="pt-12">
       <h1
-        className={`truncate text-center font-bold text-[#E11D48] sm:text-left md:text-xl ${pressStart2P.className}`}
+        className={`truncate text-center text-xl font-bold tracking-tight text-[#E11D48] sm:text-left md:text-3xl ${poppinsHeading.className}`}
       >
         Related to{" "}
         <span className={clsx(color)}>
@@ -21,7 +21,7 @@ export const RelatedToAnime = async ({ info }: { info: AnimeInfo | null }) => {
         </span>
       </h1>
 
-      <div className="overflow-x-hidden pt-3 lg:pt-6">
+      <div className="overflow-x-hidden pt-3">
         <SingleCarouselRow list={info?.relations!} />
       </div>
     </div>

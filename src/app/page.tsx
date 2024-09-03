@@ -3,8 +3,8 @@ import { DotGothic16, Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 
-const dotgotchic16 = DotGothic16({ weight: "400", subsets: ["latin"] });
-const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+const poppins = Poppins({ weight: ["400"], subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
             height={100}
             alt="Hero"
           />
-          <div className="absolute bottom-[50px] left-[325px] hidden text-center text-2xl text-slate-200 lg:block">
-            <p className={`backdrop-blur-[3px] ${dotgotchic16.className}`}>
+          <div className="absolute bottom-10 left-0 right-0 hidden text-center text-2xl text-slate-200 lg:block">
+            <p className={`backdrop-blur-[3px] ${poppinsHeading.className}`}>
               Welcome to{" "}
               <span className="bg-gradient-to-r from-[#E11D48] to-[#9916FF] bg-clip-text font-extrabold text-transparent">
                 Anidey
@@ -29,7 +29,7 @@ export default function Home() {
             <Link href="/anime">
               <Button
                 variant={"secondary"}
-                className={`mt-5 ${dotgotchic16.className}`}
+                className={`mt-5 ${poppins.className}`}
               >
                 Dive Right In!
               </Button>
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       </div>
       <div className="mx-auto max-w-[1000px] py-5 pb-10 text-center lg:text-left">
-        <h1 className={`hidden text-xl lg:block ${dotgotchic16.className}`}>
+        <h1 className={`hidden text-xl lg:block ${poppinsHeading.className}`}>
           Explore, Play and Connect
         </h1>
         <h2 className="pt-5 text-red-500">
@@ -59,7 +59,7 @@ export default function Home() {
         </h2>
 
         <div className="pt-5 lg:pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Start Your Anime Adventure Today
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -71,7 +71,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Discover Our Extensive Anime Collection
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -81,8 +81,8 @@ export default function Home() {
             </li>
           </ul>
         </div>
-        <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+        {/* <div className="pt-10">
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Engage with Games and Activities
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -96,9 +96,9 @@ export default function Home() {
               trivia games. Learn fascinating facts about your beloved series.
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Coming Soon: Social Media Integration
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
 
         <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Join the Anidey Community
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -122,13 +122,12 @@ export default function Home() {
             </li>
             <li>
               Community Forums: Engage in discussions, share theories, and
-              connect with fellow anime enthusiasts in our vibrant community
-              forums.
+              connect with fellow anime enthusiasts in our discord server.
             </li>
           </ul>
         </div>
-        <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+        {/* <div className="pt-10">
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Follow Us for Updates
           </h2>
           <p>Stay updated with the latest news and announcements:</p>
@@ -136,9 +135,9 @@ export default function Home() {
             <li>Twitter</li>
             <li>Instagram</li>
           </ul>
-        </div>
+        </div> */}
         <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Contact Us
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">
@@ -149,7 +148,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="pt-10">
-          <h2 className={`text-2xl text-[#8F00FF] ${dotgotchic16.className}`}>
+          <h2 className={`text-2xl text-[#8F00FF] ${poppinsHeading.className}`}>
             Disclaimer
           </h2>
           <ul className="list-inside list-disc pt-4 text-lg">

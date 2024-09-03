@@ -1,4 +1,4 @@
-import { Poppins, Press_Start_2P } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Link from "next/link";
 import { CalendarRange, Heart, Info, Library } from "lucide-react";
 import { getFavouriteList } from "@/actions/getWatchingList";
@@ -8,7 +8,7 @@ import { SignIn } from "@/components/custom-ui/sign-in-btn";
 
 const poppinsSmall = Poppins({ weight: "400", subsets: ["latin"] });
 const poppinsBig = Poppins({ weight: "600", subsets: ["latin"] });
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 const page = async () => {
   const session = await auth();
@@ -31,7 +31,7 @@ const page = async () => {
   return (
     <div className="mx-auto min-h-dvh max-w-[1440px] px-1 pt-20">
       <div
-        className={`${pressStart2P.className} flex items-center justify-center gap-x-2 px-2 pb-2 text-sm text-[#E11D48] md:text-lg lg:justify-start lg:pb-5 xl:text-xl`}
+        className={`${poppinsHeading.className} flex items-center justify-center gap-x-2 px-2 pb-2 text-xl font-bold tracking-tight text-[#E11D48] md:text-3xl lg:justify-start lg:pb-5`}
       >
         <Heart size={28} className="pb-[1px]" />
         Favourites

@@ -31,7 +31,7 @@ const SingleCarouselRow = ({
     <Carousel
       opts={{
         align: "start",
-        loop: true,
+        // loop: true,
       }}
     >
       <CarouselContent className="mb-8">
@@ -48,7 +48,7 @@ const SingleCarouselRow = ({
                 <AnimeCard anime={anime} />
                 <div className={`${poppinsSmall.className}`}>
                   <h1
-                    className={`max-w-28 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52 ${poppinsBig.className}`}
+                    className={`xs:max-w-28 max-w-24 truncate pt-2 text-xs hover:text-[#E11D48] sm:max-w-36 sm:text-sm md:max-w-48 lg:max-w-52 ${poppinsBig.className}`}
                   >
                     {anime.title.english
                       ? anime.title.english

@@ -71,7 +71,7 @@ const page = async ({
         <div className="col-span-4">
           <Recommendations info={animeInfo} />
         </div>
-        <div className="col-span-2 pt-3">
+        <div className="col-span-2 pt-2">
           <WideGenreCardSection genre={animeInfo?.genres[0]!} />
         </div>
       </div>

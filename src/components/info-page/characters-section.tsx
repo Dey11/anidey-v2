@@ -1,8 +1,8 @@
 import { AnimeInfo } from "@/types/anilist";
-import { Press_Start_2P } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Image from "next/image";
 
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 export const CharSection = ({ info }: { info: AnimeInfo | null }) => {
   if (info?.characters.length === 0) return <div></div>;
@@ -10,12 +10,12 @@ export const CharSection = ({ info }: { info: AnimeInfo | null }) => {
   return (
     <div className="pt-12">
       <h1
-        className={`text-center font-bold tracking-wide text-[#FFB800] sm:text-left md:text-xl ${pressStart2P.className}`}
+        className={`text-center text-xl font-bold tracking-tight text-[#FFB800] sm:text-left md:text-3xl ${poppinsHeading.className}`}
       >
         Characters & Voice Actors
       </h1>
 
-      <div className="grid grid-cols-2 justify-items-center gap-y-5 pt-6 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+      <div className="grid grid-cols-2 justify-items-center gap-y-5 pt-5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
         {info?.characters.slice(0, 8).map((char) => {
           return (
             <VoiceActorDiv

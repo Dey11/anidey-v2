@@ -1,8 +1,8 @@
 import { fetchTrendingAnime } from "@/lib/anilistApi/getLists";
 import SingleCarouselRow from "@/components/misc/carousel-row";
-import { Press_Start_2P } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 const TopPicks = async () => {
   const trendingList = await fetchTrendingAnime(1, 12);
@@ -11,7 +11,7 @@ const TopPicks = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-2 text-center font-bold text-[#E11D48] md:text-left md:text-xl lg:pb-5 lg:pl-3 ${pressStart2P.className}`}
+        className={`pb-2 text-center text-xl font-bold tracking-tight text-[#E11D48] md:text-left md:text-3xl lg:pb-3 lg:pl-3 ${poppinsHeading.className}`}
       >
         Top Picks This Month
       </h1>

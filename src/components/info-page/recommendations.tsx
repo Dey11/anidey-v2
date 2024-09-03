@@ -9,10 +9,10 @@ import {
 import { AnimeInfo, Recommendation } from "@/types/anilist";
 import clsx from "clsx";
 import { Library } from "lucide-react";
-import { Press_Start_2P } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Link from "next/link";
 
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
   const color = "text-[" + info?.color + "]";
@@ -24,7 +24,7 @@ export const Recommendations = async ({ info }: { info: AnimeInfo | null }) => {
     <div className="pt-2">
       {color && (
         <h1
-          className={`truncate text-center font-bold text-[#E11D48] sm:text-left md:text-xl ${pressStart2P.className}`}
+          className={`truncate text-center text-xl font-bold tracking-tight text-[#E11D48] sm:text-left md:text-3xl ${poppinsHeading.className}`}
         >
           More like{" "}
           <span className={clsx(color)}>
@@ -47,13 +47,13 @@ const RecommendationsCarouselRow = ({ list }: { list: Recommendation[] }) => {
     <Carousel
       opts={{
         align: "start",
-        loop: true,
+        // loop: true,
       }}
     >
       <CarouselContent className="">
         {list.map((anime) => (
           <CarouselItem
-            className="basis-1/3 pt-3 sm:basis-1/4 lg:ml-[-10px] lg:pl-10 lg:pt-6"
+            className="basis-1/3 pt-3 sm:basis-1/4 lg:ml-[-10px] lg:pl-10 lg:pt-4"
             key={anime.id}
           >
             <Link href={`/anime/info/${anime.id}`}>

@@ -10,10 +10,11 @@ import {
 import { RecentEpisodes } from "@/types/anilist";
 import Link from "next/link";
 import { Library } from "lucide-react";
-import { Press_Start_2P, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
+// const pressStart2P = Press_Start_2P({ weight: "400", subsets: ["latin"] });
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
+const poppinsHeading = Poppins({ weight: ["600"], subsets: ["latin"] });
 
 const RecentlyAired = async () => {
   const recentlyAiredList = await fetchRecentlyAiredEpisodes(1, 10);
@@ -22,7 +23,7 @@ const RecentlyAired = async () => {
   return (
     <div className="mx-2 overflow-x-hidden">
       <h1
-        className={`pb-2 text-center font-bold text-[#E11D48] md:text-left md:text-xl lg:pb-5 lg:pl-3 ${pressStart2P.className}`}
+        className={`pb-2 text-center text-xl font-bold text-[#E11D48] md:text-left md:text-3xl lg:pb-3 lg:pl-3 ${poppinsHeading.className}`}
       >
         Recently Aired Episodes
       </h1>

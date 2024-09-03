@@ -3,6 +3,7 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { StreamEpisodeList } from "@/lib/anilistApi/getStreamingLink";
 import useFetchEpisodeList from "@/lib/hooks/useFetchEpisodeList";
+import { cn } from "@/lib/utils";
 import clsx from "clsx";
 import { LayoutGrid, LibraryBig } from "lucide-react";
 import Link from "next/link";
@@ -83,11 +84,12 @@ const ListView = ({
               key={episode.episodeId}
             >
               <div
-                className={clsx(
+                className={cn(
                   "min-h-16 gap-2 rounded-md p-2",
                   episode.episodeId == episodeIdOfAnime
                     ? "bg-rose-500"
                     : "bg-[#171717]",
+                  episode.isFiller ? "bg-gray-500" : "",
                 )}
               >
                 <div className="flex flex-col">
@@ -126,11 +128,12 @@ const GridView = ({
             key={episode.episodeId}
           >
             <div
-              className={clsx(
+              className={cn(
                 "h-10 w-[38px] rounded-md bg-[#171717] p-2 text-center text-sm",
                 episode.episodeId == episodeIdOfAnime
                   ? "bg-rose-500"
                   : "bg-[#171717]",
+                episode.isFiller ? "bg-gray-500" : "",
               )}
             >
               {episode.number}
