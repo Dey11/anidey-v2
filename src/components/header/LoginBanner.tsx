@@ -30,7 +30,7 @@ const LoginBanner = () => {
     </div> */}
       <div className="w-full p-2 text-center text-sm">
         We are currently in the process of migrating to a new platform. The
-        website might not work as expected.
+        website might not work as expected. Please give us ~1 day.
       </div>
     </div>
   );
