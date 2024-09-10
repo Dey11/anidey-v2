@@ -15,7 +15,7 @@ const LoginBanner = () => {
         isOpen ? "" : "hidden",
       )}
     >
-      <div className="w-full p-2 text-center text-sm">
+      {/* <div className="w-full p-2 text-center text-sm">
         Please consider logging in to enjoy all the features of the website. You
         can also join the{" "}
         <a href={DISCORD_URL} className="underline">
@@ -27,6 +27,11 @@ const LoginBanner = () => {
         className="h-8 w-8 cursor-pointer justify-end pr-2"
         onClick={() => setIsOpen(false)}
       />
+    </div> */}
+      <div className="w-full p-2 text-center text-sm">
+        We are currently in the process of migrating to a new platform. The
+        website might not work as expected.
+      </div>
     </div>
   );
 };
