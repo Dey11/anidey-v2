@@ -32,6 +32,10 @@ const LoginBanner = () => {
         We are currently in the process of migrating to a new platform. The
         website might not work as expected. Please give us ~1 day.
       </div>
+      <X
+        className="h-8 w-8 cursor-pointer justify-end pr-2"
+        onClick={() => setIsOpen(false)}
+      />
     </div>
   );
 };
