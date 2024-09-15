@@ -29,8 +29,14 @@ const LoginBanner = () => {
       />
     </div> */}
       <div className="w-full p-2 text-center text-sm">
-        We are currently in the process of migrating to a new platform. The
-        website might not work as expected. Please give us ~1 day.
+        <p>
+          Please consider logging in to enjoy all the features of the website.
+          You can also join the{" "}
+          <a href={DISCORD_URL} className="underline">
+            Discord
+          </a>{" "}
+          server to get updates and report issues.
+        </p>
       </div>
       <X
         className="h-8 w-8 cursor-pointer justify-end pr-2"
