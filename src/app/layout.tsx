@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import RecoilContextProvider from "../lib/recoil-context-provider";
 import { Footer } from "@/components/footer/footer";
 import LoginBanner from "@/components/header/LoginBanner";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,14 +26,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <script
           defer
           src="https://umami-u84cskk0s8s0k088scw00o48.anidey.fun/script.js"
           data-website-id="1ed74259-4b93-4cdc-bda6-e542fac37f36"
         ></script>
-      </head>
+      </head> */}
       <SessionProvider>
+        <Analytics />
         <RecoilContextProvider>
           <body className={`${inter.className} dark`}>
             <LoginBanner />
