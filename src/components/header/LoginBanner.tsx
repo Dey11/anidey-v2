@@ -1,6 +1,6 @@
 "use client";
 
-import { DISCORD_URL } from "@/lib/constants";
+import { DISCORD_URL, KOFI_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 import { useState } from "react";
@@ -29,13 +29,21 @@ const LoginBanner = () => {
       />
     </div> */}
       <div className="w-full p-2 text-center text-sm">
-        <p>
+        {/* <p>
           Please consider logging in to enjoy all the features of the website.
           You can also join the{" "}
           <a href={DISCORD_URL} className="underline">
             Discord
           </a>{" "}
           server to get updates and report issues.
+        </p> */}
+        <p>
+          We are currently testing servers. Images might break. Consider
+          supporting us by{" "}
+          <a href={KOFI_URL} className="underline">
+            donating
+          </a>
+          .
         </p>
       </div>
       <X
