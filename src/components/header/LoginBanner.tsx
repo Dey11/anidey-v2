@@ -38,8 +38,8 @@ const LoginBanner = () => {
           server to get updates and report issues.
         </p> */}
         <p>
-          We are currently testing servers. Images might break. Consider
-          supporting us by{" "}
+          We are currently testing servers. Images might break. Consider helping
+          us buy better servers by{" "}
           <a href={KOFI_URL} className="underline">
             donating
           </a>
